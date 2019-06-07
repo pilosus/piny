@@ -1,0 +1,4 @@
+mail:
+  host: smtp.example.com
+  login: user
+  password: ${MAIL_PASSWORD}

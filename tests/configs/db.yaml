@@ -1,0 +1,4 @@
+db:
+  host: db.example.com
+  login: user
+  password: ${DB_PASSWORD}

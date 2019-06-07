@@ -1,0 +1,16 @@
+db:
+  host: db.example.com
+  login: user
+  password: ${DB_PASSWORD}
+mail:
+  host: smtp.example.org
+  login: user
+  password: ${MAIL_PASSWORD:-My123~!@#$%^&*())_+Password!}
+logging:
+  host: logging.example.org
+  login: user
+  password: ${LOGGING_PASSWORD:-:-test:-}
+sentry:
+  host: sentry.example.com
+  login: user
+  password: ${SENTRY_PASSWORD:-}
