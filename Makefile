@@ -21,7 +21,7 @@ format:
 .PHONY: lint
 lint:
 	@echo "Run linters"
-	python setup.py check -ms
+	python setup.py check -rms
 	flake8 piny
 	$(isort) --check-only
 	$(black) --check

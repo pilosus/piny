@@ -9,7 +9,7 @@ try:
     history = current_dir.joinpath('CHANGELOG.rst').read_text()
     long_description = '\n\n'.join([current_dir.joinpath('README.rst').read_text(), history])
 except FileNotFoundError:
-    long_description = 'Load YAML configuration files with environment variables interpolation in Python'
+    long_description = 'YAML configs loader with environment variables interpolation for Python'
 
 setup(
     name='piny',

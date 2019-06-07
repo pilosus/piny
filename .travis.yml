@@ -4,31 +4,24 @@ language: python
 python:
 - '3.6'
 - '3.7'
-- '3.8-dev'
-
+- 3.8-dev
 install:
 - pip install -r requirements.txt
 - make install
 - pip freeze
-
-env:
-  global:
-  - secure: dBYgTCnJkuOThBLEywObTchqJSR0mjO+IahA7OaMecUqVLQz+SXGVf5PNo67Gxmq/csAt+FGgOL3+PSWYHYdkvt62K2wPIXC4Q8zNyP9iVRmN5oBoEEIUMLCmRbRyu4+q8tmZNbldlgvOW3A+7jre+0b3ZQ0haaHOSgiYlpDfEgvBag9UfD/+9KenbmQJlYXEHM3vZMzMu1OEfljOTsbZW4pYea1nbAye/7VgMBt6bvigs7FzTE4LDMmtpc8pQhKH1N4IaeL0cFuhLGY2f7z3zoy0DvxZ4348WPVWfxsVsRs2+SjA9dtJRz9q1nSTZeM+vMdHkbjtyhTIAK5Edk+c0R5Fb+WvFW8NMFnbDSXDkUjUbWzNMY+/cp3thD8MkhzSrYc0jZl1u0LNZMNqTClUMNw54VzosjMsGqha7Td5jyjs9/8Sak+FqeFpB5SEITUUAcsrdBKlbgjJdoM9HrlEMDErTSoT/mDRre+YBxWkoauCSC4t7vN3bVeFKUKHLTa9ydj4NQ5nOlmaUysAk7zSBp6UVkPw1BrA/kKeboBkj/ugOABBVVuwOJoAMdsCvLlZpNtLtUpmsOuuN0yfp4323V+8X7/jhrqi+Rrhn4lVuwcvZMDxzV1eL+omMlVRlSsd0UK6w6oW/eqTdTiyCwkQjWR3pqcqUQFaGzDUyOcA3g=
-
 before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- "./cc-test-reporter before-build"
 script:
 - make lint
 - make mypy
 - make test
-
 after_success:
 - ls -ltha
 - bash <(curl -s https://codecov.io/bash)
-- ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-
+- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
 jobs:
   allow_failures:
   - python: 3.8-dev
@@ -38,14 +31,17 @@ jobs:
     if: type = push AND (branch = master OR tag IS present)
     python: 3.7
     script:
-      - make build
-      - ls -ltha dist
+    - make build
+    - ls -ltha dist
     deploy:
       provider: pypi
       skip_cleanup: true
       user: pilosus
       password:
-        secure: cdMwIx/aVR8YnjZs0aK7zYG5T52ViHbRjuevrGGDJHMnMxNwQ1HqdCwFQOoPkSmjlHnKX65tn/20nFnGGfxs9EEzLzOXyxOEF7k6bwnSdZOZKhOJBbyzdysGT1P86WkGQpjkvrZHLPyTNPEHXHyW9SLtji9w9iqz0bLsCsz2te0dREii0lN6t2s3ZO93mSt/P62uLdP1C9XlLEljN826jXVpMWaUK0P80+yJpqrw3L/HACedD69QqjmgKXr8zngIQgyv8CZKKKdZe6fYhie4SGHSnhh5+wZsc5ML9JqCzA7rl2oYqQJ65PyN47LCvCe5ynxIfRTXpKaP6BDqx845bvMP9cIolSpT1baxM8OsUYX2B2cdTPSmCgoAeWWfNp4yX+44FxQEMxRgNkP2E03aBZdBCG/IR+UhUQUS3buQsJYDYBHhjqZX7NC0h4TL8cGca3r46IwDOIzTNpQ8DZsoEcYg+hpOBrrTCJXamGektO1gt0Ts7qG0JHwXC0GwZiw5+cpZgJV+Y1dVmIe9tIyQ+69k25iLuLnfsUdDp7QRMTaDFfGYrZrEa6ni2bYZ755K87mqNoUZdeRgBavCkhtFhvndgO/81jMQkUDkuZIFkOF5H/X7ohulrgF/EVILp2PYqeEOUFdNqynXDvwJ9u5l3HBU1rjbHniEmzQY1DX2Uc0=
+        secure: XSH5WisO6g/oMmT7nA1HdiPOO8zlsv58rIm1kaFWtXIerb+UGd58ZsCDP2Zom94BDqNloaGbm/udiLIpvwsv0HL6TS3yBUeN+o7ofQeZhTuKXsaCjV1aiO3mzpWJC2veFZ6aFFdRtzWkJ052eYV+cE41X8qBsJ/0VyJ0n5wXF1omVR3I1Xm+97dT+0nvrOPlGfzoDDe7S7zlOymd0FLJiJx1hrnoj2e/8Ef6Rw1BqXTVhc9E/eKRhuP1Mnz99GOE+/Ru2OFyk/945jw2gvzz79wdgsc/FwXdv4k5L+3UQsUi+I+D65Wqa6NGqDeZTPFapMNQtzPlzqBhQX71Mj9zxtzrdef5BYno5leqTiLdDw0YHF1NBPPJHaPu9aqD7XqI8iRGUTseQVYaPxlwavYude80MGQkRCvORg3T1TTlbGL6jnhl97lK58ReUERNlUb3M5TP0ngNQmSLLkMnFx9wYAA6OSrDLpCh+A/cqqI12A40q97ltAlKidAJ4kDAYjZdwtLpb7Nb9d3rFHOU5y7uG14ueSNnbeWBeDaCoQRwJLmJLCuhTW+UdZ5RpGcyUpdZNfYEAMczFJm8oFrsh1y2pq45tJBB6ztwuTjmH2N1K2lHlXIBPg8iNs3tvSdqLaVQ4Y1y0Z8wG3sQ4dtQmkrQkuDZuDbwRdrnELZCmf9sR4U=
       on:
         tags: true
         all_branches: true
+env:
+  global:
+    secure: jSBVD9cQgZE1ZqBWy+a6MlI25oYMSDvcA1MDjiWU4Za/C/owzONTTMFkANC5n9hUQR9QZe2fDGqQmvEEFPTZEfgttcpQnaOu1MYOgAPT57PGq/5Ygwe7/vKUEVVZrlZGaiYDRpX2z2mFDGKW+pJLXZdKmoEQm8lxZLf4zxLIQX4m/mezfyvRyw6Gpn5I/aP0Rf2OuOOJvObOwsuCe8+97757a3KYeHuwVLAT7mXCDq4oAt2u9IVmBR3cnAokxmuZj1EhTfOlH6JAC3JCzS0q73rRky2VQXReceh/OKmnIMAvcM7V7242LvqLwjIrFatjxPLmjaDKojRadungJYlkxF2ltFOLa5fkQdGnVPXbZwviirC2+2+FIoLeXUiHlcGyhZepPx0hTYmM10HJqH4NOWc6wvMmgpZMPgga9z3cYCJQslVt/Qydt+yJSBFljHqoZYg6gss0ZursiV3W2wIawl05CsKx67rgNMG6PSmn09pcOoavsaAKgBc/BJxG5ud0/bvAPMoztv85UQtfWajV1YChsaE8aStqsiU8rZM+LlfIMhEYl2h4gaCPk+o50J+MBelGuNwaKuTRufrFxyrfIjbXxsK6uHL9UAYpWTINMX2EuPfP8PwSiAOPH739UyMjEjjc50CLnspK6YsGjYzJ9wCtc8KTeF+Ons2A5N8IaUI=
