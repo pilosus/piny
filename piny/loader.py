@@ -14,7 +14,7 @@ class Matcher(yaml.SafeLoader):
     Base class for matchers (i.e. yaml loaders)
     """
 
-    matcher: Pattern[str]
+    matcher: Pattern[str] = re.compile("")
 
     @staticmethod
     def constructor(loader, node):
@@ -28,11 +28,11 @@ class StrictMatcher(Matcher):
     If value is not set return None.
     """
 
-    matcher = re.compile(r"\$\{([^}^{]+)\}")
+    matcher = re.compile(r"\$\{([^}^{^:]+)\}")
 
     @staticmethod
     def constructor(loader, node):
-        match = MatcherWithDefaults.matcher.match(node.value)
+        match = StrictMatcher.matcher.match(node.value)
         return os.environ.get(match.groups()[0])  # type: ignore
 
 
