@@ -31,6 +31,8 @@ Set your environment variables, add them to your YAML configuration file:
     mail:
       login: user
       password: ${MAIL_PASSWORD:-my_default_password}
+    sentry:
+      dsn: ${VAR_NOT_SET}
 
 Then load your config:
 
@@ -41,7 +43,21 @@ Then load your config:
     config = YamlLoader(path="config.yaml").load()
     print(config)
     # {'db': {'login': 'user', 'password': 'my_db_password'},
-    # 'mail': {'login': 'user', 'password': 'my_default_password'}}
+    # 'mail': {'login': 'user', 'password': 'my_default_password'},
+    # 'sentry': {'dsn': None}}
+
+You may want to discourage Bash-style envs with defaults in your configs.
+In such case, use a ``StrictMatcher``:
+
+.. code-block:: python
+
+    from piny import YamlLoader, StrictMatcher
+
+    config = YamlLoader(path="config.yaml", matcher=StrictMatcher).load()
+
+Both strict and default matchers produce ``None`` value if environment variable
+matched is not set in the system (and no default syntax used in the case of
+default matcher).
 
 
 .. |Build| image:: https://travis-ci.org/pilosus/piny.svg?branch=master
