@@ -1,6 +1,10 @@
 CHANGELOG
 ---------
 
+v0.3.1 (2019-06-09)
+...................
+* Minor RST syntax fix in README.rst (#9) by @pilosus
+
 v0.3.0 (2019-06-09)
 ...................
 * README.rst extended with ``Rationale`` and ``Best practices`` sections (#5) by @pilosus
