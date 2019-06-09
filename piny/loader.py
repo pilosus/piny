@@ -1,39 +1,54 @@
 import os
 import re
-from typing import Any, Type
+from typing import Any, Pattern, Type
 
 import yaml
 
 #
-# Helpers
+# Matchers
 #
 
 
-class EnvLoader(yaml.SafeLoader):
+class Matcher(yaml.SafeLoader):
+    """
+    Base class for matchers (i.e. yaml loaders)
+    """
+
+    matcher: Pattern[str]
+
+    @staticmethod
+    def constructor(loader, node):
+        raise NotImplementedError
+
+
+class StrictMatcher(Matcher):
+    """
+    Expand an environment variable of form ${VAR} with its value
+
+    If value is not set return None.
+    """
+
     matcher = re.compile(r"\$\{([^}^{]+)\}")
 
     @staticmethod
     def constructor(loader, node):
-        """
-        Expand an environment variable of form ${VAR} with its value
-
-        If value is not set return variable name as a string.
-        """
-        return os.path.expandvars(node.value)
+        match = MatcherWithDefaults.matcher.match(node.value)
+        return os.environ.get(match.groups()[0])  # type: ignore
 
 
-class EnvDefaultsLoader(EnvLoader):
+class MatcherWithDefaults(Matcher):
+    """
+    Expand an environment variable with its value
+
+    Forms supported: ${VAR}, ${VAR:-default}
+    If value is not set and no default value given return None.
+    """
+
     matcher = re.compile(r"\$\{([a-zA-Z_$0-9]+)(:-.*)?\}")
 
     @staticmethod
     def constructor(loader, node):
-        """
-        Expand an environment variable with its value
-
-        Forms supported: ${VAR}, ${VAR:-default}
-        If value is not set and no default value given return None.
-        """
-        match = EnvDefaultsLoader.matcher.match(node.value)
+        match = MatcherWithDefaults.matcher.match(node.value)
         variable, default = match.groups()  # type: ignore
 
         if default:
@@ -54,13 +69,13 @@ class YamlLoader:
     Load YAML configuration file
     """
 
-    def __init__(self, path: str, loader: Type[EnvLoader] = EnvDefaultsLoader) -> None:
+    def __init__(self, path: str, matcher: Type[Matcher] = MatcherWithDefaults) -> None:
         self.path = path
-        self.loader = loader
+        self.matcher = matcher
 
     def _init_resolvers(self):
-        self.loader.add_implicit_resolver("!env", self.loader.matcher, None)
-        self.loader.add_constructor("!env", self.loader.constructor)
+        self.matcher.add_implicit_resolver("!env", self.matcher.matcher, None)
+        self.matcher.add_constructor("!env", self.matcher.constructor)
 
     def load(self) -> Any:
         """
@@ -68,5 +83,5 @@ class YamlLoader:
         """
         self._init_resolvers()
         with open(self.path) as fh:
-            load = yaml.load(fh, Loader=self.loader)
+            load = yaml.load(fh, Loader=self.matcher)
         return load
