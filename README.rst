@@ -67,20 +67,21 @@ default matcher).
 Best practices
 --------------
 
-  - Maintain healthy security/convenience balance for your config
+- Maintain healthy security/convenience balance for your config
 
-  - Mark up entity as an environment variable in your YAML if and only if
-    it really is a *secret* (login/passwords, private API keys, crypto keys,
-    certificates, or maybe DB hostname too? You decide)
+- Mark up entity as an environment variable in your YAML if and only if
+  it really is a *secret* (login/passwords, private API keys, crypto keys,
+  certificates, or maybe DB hostname too? You decide)
 
-  - Once config is loaded by Piny validate it using your favourite validation tool
-    (some integrations are coming in the `future releases`_)
+- Once config is loaded by Piny validate it using your favourite validation tool
+  (some integrations are coming in the `future releases`_)
 
-  - Store your config files in the version control system along with you app’s code.
+- Store your config files in the version control system along with you app’s code.
 
-  - Environment variables are set by whomever is responsible for the deployment.
-    Modern orchestration systems like `Kubernetes`_ make it easier to keep envs secure
-    (see `Kubernetes Secrets`_).
+- Environment variables are set by whomever is responsible for the deployment.
+  Modern orchestration systems like `Kubernetes`_ make it easier to keep envs secure
+  (see `Kubernetes Secrets`_).
+
 
 Fun facts
 ---------
