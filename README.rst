@@ -9,7 +9,11 @@ Keep your app's configuration in YAML file with sensitive data marked as environ
 Put sensitive data into environment variables. Then let *piny* interpolate
 the variables on YAML loading.
 
-*Piny* is a recursive acronym for *Piny Is Not YAML*
+Rationale
+---------
+
+Piny combines YAML config's readability, versioning, and environment variable's security.
+Read more in the `blog post`_.
 
 
 Installation
@@ -60,6 +64,32 @@ matched is not set in the system (and no default syntax used in the case of
 default matcher).
 
 
+Best practices
+--------------
+
+  - Maintain healthy security/convenience balance for your config
+
+  - Mark up entity as an environment variable in your YAML if and only if
+    it really is a *secret* (login/passwords, private API keys, crypto keys,
+    certificates, or maybe DB hostname too? You decide)
+
+  - Once config is loaded by Piny validate it using your favourite validation tool
+    (some integrations are coming in the `future releases`_)
+
+  - Store your config files in the version control system along with you app’s code.
+
+  - Environment variables are set by whomever is responsible for the deployment.
+    Modern orchestration systems like `Kubernetes`_ make it easier to keep envs secure
+    (see `Kubernetes Secrets`_).
+
+Fun facts
+---------
+
+*Piny* is a recursive acronym for *Piny Is Not YAML*.
+Not only it's a library name, but also a name for YAML marked up
+with environment variables.
+
+
 .. |Build| image:: https://travis-ci.org/pilosus/piny.svg?branch=master
    :target: https://travis-ci.org/pilosus/piny
 .. |Maintainability| image:: https://img.shields.io/codeclimate/maintainability/pilosus/piny.svg
@@ -77,3 +107,7 @@ default matcher).
 .. |License| image:: https://img.shields.io/github/license/pilosus/piny.svg
    :alt: MIT License
    :target: https://github.com/pilosus/piny/blob/master/LICENSE
+.. _blog post: https://blog.pilosus.org/posts/2019/06/07/application-configs-files-or-environment-variables-actually-both/?utm_source=github&utm_medium=link&utm_campaign=rationale
+.. _future releases: https://github.com/pilosus/piny/issues/2
+.. _Kubernetes: https://kubernetes.io/
+.. _Kubernetes Secrets: https://kubernetes.io/docs/concepts/configuration/secret/
