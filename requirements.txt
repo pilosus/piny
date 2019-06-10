@@ -14,4 +14,4 @@ pytest-cov==2.7.1
 
 # Development tools
 ipython==7.5.0
-ipdb
+ipdb==0.12
