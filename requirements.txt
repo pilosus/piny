@@ -13,5 +13,5 @@ pytest==4.6.2
 pytest-cov==2.7.1
 
 # Development tools
-ipython
+ipython==7.5.0
 ipdb
