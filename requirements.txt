@@ -6,12 +6,12 @@ black==19.3b0
 flake8==3.7.7
 isort==4.3.20
 mypy==0.701
-safety
+safety==1.8.5
 
 # Testing
 pytest==4.6.2
 pytest-cov==2.7.1
 
 # Development tools
-ipython
-ipdb
+ipython==7.5.0
+ipdb==0.12
