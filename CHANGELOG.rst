@@ -1,6 +1,10 @@
 CHANGELOG
 ---------
 
+v0.4.1 (2019-06-17)
+...................
+* Issue and PR templates added, minor docs fixes (#16) by @pilosus
+
 v0.4.0 (2019-06-16)
 ...................
 * Data validators support added for ``Pydantic``, ``Marshmallow`` (#2) by @pilosus
