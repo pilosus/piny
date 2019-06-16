@@ -7,24 +7,24 @@ assignees: ''
 
 ---
 
-**Describe the bug**
+### Describe the bug ###
 
 A clear and concise description of what the bug is.
 
-**To Reproduce**
+### To Reproduce ###
 
 Steps to reproduce the behavior
 
-**Expected behavior**
+### Expected behavior ###
 
 A clear and concise description of what you expected to happen.
 
-**Context**
+### Context ###
 
  - Piny version [e.g. 0.4.0]
  - Python version [e.g. CPython 3.7.2]
  - OS version (e.g. Linux distribution, version, kernel version)
 
-**Additional context**
+### Additional context ###
 
 Add any other context about the problem here.

@@ -56,6 +56,8 @@ Development rules
 
 9. Commit, push, open new Pull Request.
 
+10. Make sure Travis CI/CD pipeline succeeds.
+
 .. _proof-of-concept: https://blog.pilosus.org/posts/2019/06/07/application-configs-files-or-environment-variables-actually-both/
 .. _minor versions: https://semver.org/
 .. _open issues: https://github.com/pilosus/piny/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen
