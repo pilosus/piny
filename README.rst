@@ -72,7 +72,7 @@ Validation
 Piny supports *optional* data validation using third-party libraries:
 `Marshmallow`_, `Pydantic`_, `Trafaret`_.
 
-.. code-block:: yaml
+.. code-block:: python
 
   import marshmallow as ma
   from piny import MarshmallowValidator, StrictMatcher, YamlLoader
@@ -138,10 +138,16 @@ Not only it's a library name, but also a name for YAML marked up
 with environment variables.
 
 
+Contributing
+------------
+
+See `CONTRIBUTING.rst`_.
+
+
 .. |Build| image:: https://travis-ci.org/pilosus/piny.svg?branch=master
    :target: https://travis-ci.org/pilosus/piny
 .. |Maintainability| image:: https://img.shields.io/codeclimate/maintainability/pilosus/piny.svg
-   :target: https://travis-ci.org/pilosus/piny
+   :target: https://codeclimate.com/github/pilosus/piny/maintainability
    :alt: Code Climate maintainability
 .. |Coverage| image:: https://img.shields.io/codeclimate/coverage/pilosus/piny.svg
    :target: https://codeclimate.com/github/pilosus/piny/test_coverage
@@ -165,3 +171,4 @@ with environment variables.
 .. _tests: https://github.com/pilosus/piny/tree/master/tests
 .. _source code: https://github.com/pilosus/piny/tree/master/piny
 .. _coming soon: https://github.com/pilosus/piny/issues/12
+.. _CONTRIBUTING.rst: https://github.com/pilosus/piny/tree/master/CONTRIBUTING.rst
