@@ -1,4 +1,3 @@
-from typing import Optional
 from unittest import mock
 
 import pytest
@@ -61,7 +60,7 @@ def test_pydantic_validator_success(name):
             path=config_directory.joinpath("{}.yaml".format(name)),
             matcher=StrictMatcher,
             validator=PydanticValidator,
-            validator_schema=PydanticConfig,
+            schema=PydanticConfig,
         ).load()
 
         assert config[name]["host"] == "db.example.com"
@@ -76,7 +75,7 @@ def test_pydantic_validator_fail(name):
             path=config_directory.joinpath("{}.yaml".format(name)),
             matcher=StrictMatcher,
             validator=PydanticValidator,
-            validator_schema=PydanticConfig,
+            schema=PydanticConfig,
         ).load()
 
 
@@ -88,7 +87,7 @@ def test_marshmallow_validator_success(name):
             path=config_directory.joinpath("{}.yaml".format(name)),
             matcher=StrictMatcher,
             validator=MarshmallowValidator,
-            validator_schema=MarshmallowConfig,
+            schema=MarshmallowConfig,
         ).load()
 
         assert config[name]["host"] == "db.example.com"
@@ -105,9 +104,9 @@ def test_marshmallow_validator_fail(name):
             path=config_directory.joinpath("{}.yaml".format(name)),
             matcher=StrictMatcher,
             validator=MarshmallowValidator,
-            validator_schema=MarshmallowConfig,
-            validator_params=dict(strict=True),
-        ).load(params=dict(many=False))
+            schema=MarshmallowConfig,
+            strict=True,
+        ).load(many=False)
 
 
 @pytest.mark.parametrize("name", ["db"])
@@ -118,7 +117,7 @@ def test_trafaret_validator_success(name):
             path=config_directory.joinpath("{}.yaml".format(name)),
             matcher=StrictMatcher,
             validator=TrafaretValidator,
-            validator_schema=TrafaretConfig,
+            schema=TrafaretConfig,
         ).load()
 
         assert config[name]["host"] == "db.example.com"
@@ -136,5 +135,5 @@ def test_trafaret_validator_fail(name):
             path=config_directory.joinpath("{}.yaml".format(name)),
             matcher=StrictMatcher,
             validator=TrafaretValidator,
-            validator_schema=TrafaretConfig,
+            schema=TrafaretConfig,
         ).load()

@@ -19,7 +19,9 @@ Read more in the `blog post`_.
 Installation
 ------------
 
-Install using ``pip install -U piny``.
+Install using ``pip install -U piny``. For optional validation support use
+one of the extra libraries in the square brackets:
+``pip install -U 'piny[pydantic,marshmallow,trafaret]'``
 
 
 Usage
@@ -64,6 +66,44 @@ matched is not set in the system (and no default syntax used in the case of
 default matcher).
 
 
+Validation
+----------
+
+Piny supports *optional* data validation using third-party libraries:
+`Marshmallow`_, `Pydantic`_, `Trafaret`_.
+
+.. code-block:: yaml
+
+  import marshmallow as ma
+  from piny import MarshmallowValidator, StrictMatcher, YamlLoader
+
+  class DBSchema(ma.Schema):
+      login = ma.fields.String(required=True)
+      password = ma.fields.String()
+
+  class ConfigSchema(ma.Schema):
+      db = ma.fields.Nested(DBSchema)
+
+  config = YamlLoader(
+      path="database.yaml",
+      matcher=StrictMatcher,
+      validator=MarshmallowValidator,
+      schema=MarshmallowConfig,
+      strict=True
+  ).load(many=False)
+
+
+Exceptions
+----------
+
+``LoadingError`` is thrown when something goes wrong with reading or parsing YAML-file.
+``ValidationError`` is a wrapper for exceptions raised by the libraries for optional data validation.
+Original exception can be accessed by ``origin`` attribute. It comes in handy when you need more than
+just an original exception message (e.g. a dictionary of validation errors).
+
+Both exceptions inherit from the ``PinyError``.
+
+
 Best practices
 --------------
 
@@ -73,14 +113,21 @@ Best practices
   it really is a *secret* (login/passwords, private API keys, crypto keys,
   certificates, or maybe DB hostname too? You decide)
 
-- Once config is loaded by Piny validate it using your favourite validation tool
-  (some integrations are coming in the `future releases`_)
+- When loading config file, validate your data.
+  Piny supports a few popular data validation tools.
 
 - Store your config files in the version control system along with you app’s code.
 
 - Environment variables are set by whomever is responsible for the deployment.
   Modern orchestration systems like `Kubernetes`_ make it easier to keep envs secure
   (see `Kubernetes Secrets`_).
+
+
+Help
+----
+
+Explore `tests`_ directory for more examples of usage. Also take a look at the `source code`_
+and its comments. Documentation is `coming soon`_.
 
 
 Fun facts
@@ -112,3 +159,9 @@ with environment variables.
 .. _future releases: https://github.com/pilosus/piny/issues/2
 .. _Kubernetes: https://kubernetes.io/
 .. _Kubernetes Secrets: https://kubernetes.io/docs/concepts/configuration/secret/
+.. _Pydantic: https://pydantic-docs.helpmanual.io/
+.. _Marshmallow: https://marshmallow.readthedocs.io/
+.. _Trafaret: https://trafaret.readthedocs.io/
+.. _tests: https://github.com/pilosus/piny/tree/master/tests
+.. _source code: https://github.com/pilosus/piny/tree/master/piny
+.. _coming soon: https://github.com/pilosus/piny/issues/12
