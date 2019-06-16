@@ -1,12 +1,8 @@
 import os
 import re
-from typing import Any, Pattern, Type
+from typing import Pattern
 
 import yaml
-
-#
-# Matchers
-#
 
 
 class Matcher(yaml.SafeLoader):
@@ -57,31 +53,3 @@ class MatcherWithDefaults(Matcher):
             default = default[2:]
 
         return os.environ.get(variable, default)
-
-
-#
-# Main
-#
-
-
-class YamlLoader:
-    """
-    Load YAML configuration file
-    """
-
-    def __init__(self, path: str, matcher: Type[Matcher] = MatcherWithDefaults) -> None:
-        self.path = path
-        self.matcher = matcher
-
-    def _init_resolvers(self):
-        self.matcher.add_implicit_resolver("!env", self.matcher.matcher, None)
-        self.matcher.add_constructor("!env", self.matcher.constructor)
-
-    def load(self) -> Any:
-        """
-        Return Python object loaded from the YAML-file
-        """
-        self._init_resolvers()
-        with open(self.path) as fh:
-            load = yaml.load(fh, Loader=self.matcher)
-        return load

@@ -35,7 +35,7 @@ def test_strict_matcher_values_undefined(name):
 
 @pytest.mark.parametrize("name", ["db", "mail"])
 def test_strict_matcher_values_set(name):
-    with mock.patch("piny.loader.StrictMatcher.constructor") as expand_mock:
+    with mock.patch("piny.matchers.StrictMatcher.constructor") as expand_mock:
         expand_mock.return_value = CONFIG_MAP[name]
         config = YamlLoader(
             path=CONF_DIR.joinpath("{}.yaml".format(name)), matcher=StrictMatcher
@@ -66,7 +66,7 @@ def test_matcher_with_defaults_values_undefined():
 
 
 def test_matcher_with_defaults_values_set():
-    with mock.patch("piny.loader.os.environ.get") as expand_mock:
+    with mock.patch("piny.matchers.os.environ.get") as expand_mock:
         expand_mock.side_effect = lambda v, _: CONFIG_MAP[v.split("_")[0].lower()]
         config = YamlLoader(
             path=CONF_DIR.joinpath("defaults.yaml"), matcher=MatcherWithDefaults
@@ -86,7 +86,7 @@ def test_base_matcher():
     """
     with pytest.raises(NotImplementedError):
         with mock.patch(
-            "piny.loader.Matcher.matcher", new_callable=mock.PropertyMock
+            "piny.matchers.Matcher.matcher", new_callable=mock.PropertyMock
         ) as matcher_mock:
             matcher_mock.return_value = re.compile("")
             YamlLoader(path=CONF_DIR.joinpath("defaults.yaml"), matcher=Matcher).load()
