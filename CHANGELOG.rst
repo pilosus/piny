@@ -1,9 +1,10 @@
 CHANGELOG
 ---------
 
-v0.4.0 (unreleased)
+v0.4.0 (2019-06-16)
 ...................
 * Data validators support added for ``Pydantic``, ``Marshmallow`` (#2) by @pilosus
+* ``CONTRIBUTING.rst`` added (#4) by @pilosus
 
 v0.3.1 (2019-06-09)
 ...................
