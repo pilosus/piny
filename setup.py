@@ -47,4 +47,9 @@ setup(
     install_requires=[
         'PyYAML>=5.1',
     ],
+    extras_require={
+        'pydantic': ['pydantic>=0.28'],
+        'marshmallow': ['marshmallow>=2.19.3'],
+        'trafaret': ['trafaret>=1.2.0'],
+    }
 )

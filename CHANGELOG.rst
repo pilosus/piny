@@ -1,6 +1,10 @@
 CHANGELOG
 ---------
 
+v0.4.0 (unreleased)
+...................
+* Data validators support added for ``Pydantic``, ``Marshmallow`` (#2) by @pilosus
+
 v0.3.1 (2019-06-09)
 ...................
 * Minor RST syntax fix in README.rst (#9) by @pilosus
