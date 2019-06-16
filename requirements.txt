@@ -1,5 +1,7 @@
 # Package dependencies
 PyYAML>=5.1
+marshmallow==2.19.3
+trafaret==1.2.0'
 
 # Linters, formatters, security checkers
 black==19.3b0

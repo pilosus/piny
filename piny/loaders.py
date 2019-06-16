@@ -1,4 +1,4 @@
-from typing import Any, Dict, Type
+from typing import Any, Dict, Optional, Type
 
 import yaml
 
@@ -10,7 +10,7 @@ from .validators import Validator
 # Types
 #
 
-Params = Dict[str, Any]
+Params = Optional[Dict[str, Any]]
 
 
 #
@@ -43,7 +43,10 @@ class YamlLoader:
 
     def load(self, params: Params = None) -> Any:
         """
-        Return Python object loaded from the YAML-file
+        Return Python object loaded (optionally validated) from the YAML-file
+
+        :param params: dictionary with extra parameters for validation library,
+                       e.g. marshmallow_schema_object.load(data, **params).data
         """
         self._init_resolvers()
         try:

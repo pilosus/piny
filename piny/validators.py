@@ -16,7 +16,7 @@ class Validator(ABC):
         """
         Load data, return validated data or raise en error
         """
-        pass
+        pass  # pragma: no cover
 
 
 class PydanticValidator(Validator):
