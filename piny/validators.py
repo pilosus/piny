@@ -33,3 +33,11 @@ class MarshmallowValidator(Validator):
             return self.schema(**self.schema_params).load(data, **params).data
         except Exception as e:
             raise ValidationError(origin=e, reason=str(e))
+
+
+class TrafaretValidator(Validator):
+    def load(self, data: LoadedData, **params):
+        try:
+            return self.schema.check(data)
+        except Exception as e:
+            raise ValidationError(origin=e, reason=str(e))

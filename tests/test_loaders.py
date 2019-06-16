@@ -1,7 +1,10 @@
 import re
-import pytest
 from unittest import mock
+
+import pytest
+
 from piny import Matcher, MatcherWithDefaults, StrictMatcher, YamlLoader
+
 from . import config_directory, config_map
 
 
@@ -18,7 +21,8 @@ def test_strict_matcher_values_set(name):
     with mock.patch("piny.matchers.StrictMatcher.constructor") as expand_mock:
         expand_mock.return_value = config_map[name]
         config = YamlLoader(
-            path=config_directory.joinpath("{}.yaml".format(name)), matcher=StrictMatcher
+            path=config_directory.joinpath("{}.yaml".format(name)),
+            matcher=StrictMatcher,
         ).load()
         assert config[name]["password"] == config_map[name]
 
@@ -69,4 +73,6 @@ def test_base_matcher():
             "piny.matchers.Matcher.matcher", new_callable=mock.PropertyMock
         ) as matcher_mock:
             matcher_mock.return_value = re.compile("")
-            YamlLoader(path=config_directory.joinpath("defaults.yaml"), matcher=Matcher).load()
+            YamlLoader(
+                path=config_directory.joinpath("defaults.yaml"), matcher=Matcher
+            ).load()
