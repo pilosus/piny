@@ -1,6 +1,10 @@
 CHANGELOG
 ---------
 
+v0.4.2 (2019-06-17)
+...................
+* Rename parent exception ``PinyError`` to ``ConfigError`` (#18) by @pilosus
+
 v0.4.1 (2019-06-17)
 ...................
 * Issue and PR templates added, minor docs fixes (#16) by @pilosus
