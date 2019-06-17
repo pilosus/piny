@@ -4,6 +4,7 @@ CHANGELOG
 v0.4.2 (2019-06-17)
 ...................
 * Rename parent exception ``PinyError`` to ``ConfigError`` (#18) by @pilosus
+* Add feature request template for GitHub Issues (#20) by @pilosus
 
 v0.4.1 (2019-06-17)
 ...................
