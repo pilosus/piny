@@ -20,13 +20,13 @@ class PinyErrorMixin:
         return self.msg_template.format(**self.context or {})
 
 
-class PinyError(PinyErrorMixin, Exception):
+class ConfigError(PinyErrorMixin, Exception):
     pass
 
 
-class LoadingError(PinyError):
+class LoadingError(ConfigError):
     msg_template = "Loading YAML file failed: {reason}"
 
 
-class ValidationError(PinyError):
+class ValidationError(ConfigError):
     msg_template = "Validation failed: {reason}"

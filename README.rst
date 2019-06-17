@@ -101,7 +101,7 @@ Exceptions
 Original exception can be accessed by ``origin`` attribute. It comes in handy when you need more than
 just an original exception message (e.g. a dictionary of validation errors).
 
-Both exceptions inherit from the ``PinyError``.
+Both exceptions inherit from the ``ConfigError``.
 
 
 Best practices
