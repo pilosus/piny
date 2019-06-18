@@ -1,6 +1,11 @@
 Changelog
 ---------
 
+v0.5.2 (unreleased)
+...................
+* Fix ``Help`` section in ``README.rst`` (#31) by @pilosus
+
+
 v0.5.1 (2019-06-17)
 ...................
 * Fix Sphinx config, fix README.rst image markup (#28) by @pilosus

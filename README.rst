@@ -1,29 +1,41 @@
+Piny
+====
+
 |Logo|
 
 |Build| |Coverage| |Black| |Versions| |License|
 
-Piny
-====
+**Piny** is YAML config loader with environment variables interpolation for Python.
 
-YAML configs loader with environment variables interpolation for Python.
+Keep your app's configuration in a YAML file.
+Mark up sensitive data in the config as *environment variables*.
+Set environment variables on application deployment.
+Now let the *Piny* load your config and interpolate environment variables in it.
 
-Keep your app's configuration in YAML file with sensitive data marked as environment variables.
-Put sensitive data into environment variables. Then let *piny* interpolate
-the variables on YAML loading.
+Piny is developed with Docker and Kubernetes in mind,
+though it's not limited to any deployment system.
+
 
 Rationale
 ---------
 
-Piny combines YAML config's readability, versioning, and environment variable's security.
-Read more in the `blog post`_.
+Piny combines *readability and versioning* you get when using config files,
+and *security* that environment variables provide. Read more about this approach
+in the `blog post`_.
+
+
+Help
+----
+
+See `documentation`_ for more details.
 
 
 Installation
 ------------
 
-Install using ``pip install -U piny``. For optional extra validation support
-use one of the extra libraries in the square brackets:
-``pip install -U 'piny[pydantic,marshmallow,trafaret]'``
+Just run::
+
+  pip install -U piny
 
 
 Usage
@@ -125,13 +137,6 @@ Best practices
   (see `Kubernetes Secrets`_).
 
 
-Help
-----
-
-Explore `tests`_ directory for more examples of usage. Also take a look at the `source code`_
-and its comments. Documentation is `coming soon`_.
-
-
 Fun facts
 ---------
 
@@ -175,3 +180,4 @@ See `CONTRIBUTING.rst`_.
 .. _source code: https://github.com/pilosus/piny/tree/master/piny
 .. _coming soon: https://github.com/pilosus/piny/issues/12
 .. _CONTRIBUTING.rst: https://github.com/pilosus/piny/tree/master/CONTRIBUTING.rst
+.. _documentation: https://piny.readthedocs.io/
