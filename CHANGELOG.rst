@@ -1,6 +1,10 @@
 Changelog
 ---------
 
+v0.5.1 (2019-06-17)
+...................
+* Fix Sphinx config, fix README.rst image markup (#28) by @pilosus
+
 v0.5.0 (2019-06-17)
 ...................
 * Sphinx documentation added (#12) by @pilosus
