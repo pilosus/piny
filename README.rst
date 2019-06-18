@@ -1,9 +1,11 @@
+|Logo|
+
 |Build| |Coverage| |Black| |Versions| |License|
 
 Piny
 ====
 
-|Logo| YAML configs loader with environment variables interpolation for Python.
+YAML configs loader with environment variables interpolation for Python.
 
 Keep your app's configuration in YAML file with sensitive data marked as environment variables.
 Put sensitive data into environment variables. Then let *piny* interpolate
