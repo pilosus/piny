@@ -12,8 +12,6 @@
 #
 import os
 import sys
-import logging
-# sys.path.insert(0, os.path.abspath('..'))
 sys.path.append(os.path.abspath('..'))
 
 # -- Project information -----------------------------------------------------
@@ -22,14 +20,8 @@ project = 'Piny'
 copyright = '2019, Vitaly R. Samigullin'
 author = 'Vitaly R. Samigullin'
 
-try:
-    from version import get_version
-    version = get_version()
-except Exception as e:
-    logging.warning("get_version failed: {}".format(str(e)))
-    version = 'latest'
-
-release = version
+from version import get_version
+release = get_version(tag_only=True)
 
 # -- General configuration ---------------------------------------------------
 
