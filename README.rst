@@ -3,7 +3,7 @@
 Piny
 ====
 
-| Logo | YAML configs loader with environment variables interpolation for Python.
+|Logo| YAML configs loader with environment variables interpolation for Python.
 
 Keep your app's configuration in YAML file with sensitive data marked as environment variables.
 Put sensitive data into environment variables. Then let *piny* interpolate
@@ -160,7 +160,7 @@ See `CONTRIBUTING.rst`_.
    :target: https://github.com/pilosus/piny/blob/master/LICENSE
 .. |Logo| image:: https://github.com/pilosus/piny/blob/master/docs/piny_logo_noborder.png
    :alt: Piny logo
-   :align: left
+   :target: https://pypi.org/project/piny/
 
 .. _blog post: https://blog.pilosus.org/posts/2019/06/07/application-configs-files-or-environment-variables-actually-both/?utm_source=github&utm_medium=link&utm_campaign=rationale
 .. _future releases: https://github.com/pilosus/piny/issues/2
