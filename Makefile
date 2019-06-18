@@ -87,3 +87,8 @@ clean:
 	rm -rf build
 	rm -rf dist
 	python setup.py clean
+
+
+.PHONY: docs
+docs:
+	make -C docs html

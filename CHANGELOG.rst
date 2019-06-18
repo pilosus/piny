@@ -1,5 +1,10 @@
-CHANGELOG
+Changelog
 ---------
+
+v0.5.0 (2019-06-17)
+...................
+* Sphinx documentation added (#12) by @pilosus
+* Piny artwork added (#6) by Daria Runenkova and @pilosus
 
 v0.4.2 (2019-06-17)
 ...................

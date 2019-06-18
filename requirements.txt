@@ -18,3 +18,7 @@ pytest-cov==2.7.1
 # Development tools
 ipython==7.5.0
 ipdb==0.12
+
+# Docs
+Sphinx==2.1.1
+sphinx-rtd-theme==0.4.3

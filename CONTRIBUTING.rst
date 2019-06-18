@@ -1,9 +1,9 @@
 Contributing to Piny
 ====================
 
-Piny is a `proof-of-concept`_. It's developed specifically for the
-containerized Python applications deployed with orchestration systems
-like docker compose or Kubernetes.
+Piny is a `proof-of-concept`_. It's developed specifically (but not
+limited to!) for the containerized Python applications deployed with
+orchestration systems like ``docker compose`` or ``Kubernetes``.
 
 Piny is still in its early stage of development. The API may change,
 backward compatibility between `minor versions`_ is not guaranteed until
@@ -45,18 +45,20 @@ Development rules
 
 4. Create and activate ``virtualenv``.
 
-5. Install *piny* and its dependencies with ``make install``.
+5. Install *Piny* and its dependencies with ``make install``.
 
-6. Follow `GitHub Flow`_, create a new branch from ``master`` with
-   ``git checkout -b your-feature-branch``. Make your changes.
+6. Follow `GitHub Flow`_: create a new branch from ``master`` with
+   ``git checkout -b <your-feature-branch>``. Make your changes.
 
 7. Fix your code's formatting and imports with ``make format``.
 
 8. Run unit-tests and linters with ``make check``.
 
-9. Commit, push, open new Pull Request.
+9. Build documentation with ``make docs``.
 
-10. Make sure Travis CI/CD pipeline succeeds.
+10. Commit, push, open new Pull Request.
+
+11. Make sure Travis CI/CD pipeline succeeds.
 
 .. _proof-of-concept: https://blog.pilosus.org/posts/2019/06/07/application-configs-files-or-environment-variables-actually-both/
 .. _minor versions: https://semver.org/
