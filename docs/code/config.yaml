@@ -1,0 +1,8 @@
+db:
+  login: user
+  password: ${DB_PASSWORD}
+mail:
+  login: user
+  password: ${MAIL_PASSWORD:-my_default_password}
+sentry:
+  dsn: ${VAR_NOT_SET}

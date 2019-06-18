@@ -13,7 +13,7 @@ from .validators import Validator
 
 class YamlLoader:
     """
-    Load YAML configuration file
+    YAML configuration file loader
     """
 
     def __init__(

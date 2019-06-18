@@ -7,6 +7,11 @@ LoadedData = Union[Dict[str, Any], List[Any]]
 
 
 class Validator(ABC):
+    """
+    Abstract base class for optional validator classes
+
+    Use only to derive new child classes, implement all abstract methods
+    """
     def __init__(self, schema: Any, **params):
         self.schema = schema
         self.schema_params = params
@@ -20,6 +25,9 @@ class Validator(ABC):
 
 
 class PydanticValidator(Validator):
+    """
+    Validator class for Pydantic library
+    """
     def load(self, data: LoadedData, **params):
         try:
             return self.schema(**data).dict()
@@ -28,6 +36,9 @@ class PydanticValidator(Validator):
 
 
 class MarshmallowValidator(Validator):
+    """
+    Validator class for Marshmallow library
+    """
     def load(self, data: LoadedData, **params):
         try:
             return self.schema(**self.schema_params).load(data, **params).data
@@ -36,6 +47,9 @@ class MarshmallowValidator(Validator):
 
 
 class TrafaretValidator(Validator):
+    """
+    Validator class for Trafaret library
+    """
     def load(self, data: LoadedData, **params):
         try:
             return self.schema.check(data)

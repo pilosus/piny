@@ -1,9 +1,9 @@
-|Build| |Maintainability| |Coverage| |Black| |Versions| |License|
+|Build| |Coverage| |Black| |Versions| |License|
 
 Piny
 ====
 
-YAML configs loader with environment variables interpolation for Python.
+| Logo | YAML configs loader with environment variables interpolation for Python.
 
 Keep your app's configuration in YAML file with sensitive data marked as environment variables.
 Put sensitive data into environment variables. Then let *piny* interpolate
@@ -19,8 +19,8 @@ Read more in the `blog post`_.
 Installation
 ------------
 
-Install using ``pip install -U piny``. For optional validation support use
-one of the extra libraries in the square brackets:
+Install using ``pip install -U piny``. For optional extra validation support
+use one of the extra libraries in the square brackets:
 ``pip install -U 'piny[pydantic,marshmallow,trafaret]'``
 
 
@@ -88,7 +88,7 @@ Piny supports *optional* data validation using third-party libraries:
       path="database.yaml",
       matcher=StrictMatcher,
       validator=MarshmallowValidator,
-      schema=MarshmallowConfig,
+      schema=ConfigSchema,
       strict=True
   ).load(many=False)
 
@@ -107,7 +107,7 @@ Both exceptions inherit from the ``ConfigError``.
 Best practices
 --------------
 
-- Maintain healthy security/convenience balance for your config
+- Maintain a healthy security/convenience balance for your config
 
 - Mark up entity as an environment variable in your YAML if and only if
   it really is a *secret* (login/passwords, private API keys, crypto keys,
@@ -116,9 +116,9 @@ Best practices
 - When loading config file, validate your data.
   Piny supports a few popular data validation tools.
 
-- Store your config files in the version control system along with you app’s code.
+- Store your config files in the version control system along with your app’s code.
 
-- Environment variables are set by whomever is responsible for the deployment.
+- Environment variables are set by whoever is responsible for the deployment.
   Modern orchestration systems like `Kubernetes`_ make it easier to keep envs secure
   (see `Kubernetes Secrets`_).
 
@@ -146,12 +146,9 @@ See `CONTRIBUTING.rst`_.
 
 .. |Build| image:: https://travis-ci.org/pilosus/piny.svg?branch=master
    :target: https://travis-ci.org/pilosus/piny
-.. |Maintainability| image:: https://img.shields.io/codeclimate/maintainability/pilosus/piny.svg
-   :target: https://codeclimate.com/github/pilosus/piny/maintainability
-   :alt: Code Climate maintainability
-.. |Coverage| image:: https://img.shields.io/codeclimate/coverage/pilosus/piny.svg
-   :target: https://codeclimate.com/github/pilosus/piny/test_coverage
-   :alt: Code Climate coverage
+.. |Coverage| image:: https://img.shields.io/codecov/c/github/pilosus/piny.svg
+   :alt: Codecov
+   :target: https://codecov.io/gh/pilosus/piny
 .. |Black| image:: https://img.shields.io/badge/code%20style-black-000000.svg
    :target: https://github.com/python/black
    :alt: Black Formatter
@@ -161,6 +158,10 @@ See `CONTRIBUTING.rst`_.
 .. |License| image:: https://img.shields.io/github/license/pilosus/piny.svg
    :alt: MIT License
    :target: https://github.com/pilosus/piny/blob/master/LICENSE
+.. |Logo| image:: https://github.com/pilosus/piny/blob/master/docs/piny_logo_noborder.png
+   :alt: Piny logo
+   :align: left
+
 .. _blog post: https://blog.pilosus.org/posts/2019/06/07/application-configs-files-or-environment-variables-actually-both/?utm_source=github&utm_medium=link&utm_campaign=rationale
 .. _future releases: https://github.com/pilosus/piny/issues/2
 .. _Kubernetes: https://kubernetes.io/

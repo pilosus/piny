@@ -7,7 +7,9 @@ import yaml
 
 class Matcher(yaml.SafeLoader):
     """
-    Base class for matchers (i.e. yaml loaders)
+    Base class for matchers
+
+    Use this class only to derive new child classes
     """
 
     matcher: Pattern[str] = re.compile("")

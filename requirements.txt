@@ -21,3 +21,4 @@ ipdb==0.12
 
 # Docs
 Sphinx==2.1.1
+sphinx-rtd-theme==0.4.3
