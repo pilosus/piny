@@ -1,10 +1,10 @@
 Changelog
 ---------
 
-v0.5.2 (unreleased)
+v0.5.2 (2019-06-17)
 ...................
 * Fix ``Help`` section in ``README.rst`` (#31) by @pilosus
-
+* Fix Sphinx release variable (#30) by @pilosus
 
 v0.5.1 (2019-06-17)
 ...................
