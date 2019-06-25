@@ -30,7 +30,8 @@ release = get_version(tag_only=True)
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
-    'sphinx.ext.viewcode'
+    'sphinx.ext.viewcode',
+    'sphinx_click.ext',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
