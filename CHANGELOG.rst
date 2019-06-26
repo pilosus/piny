@@ -1,6 +1,10 @@
 Changelog
 ---------
 
+v0.6.0 (unreleased)
+...................
+* Add CLI utility (#35) by @pilosus
+
 v0.5.2 (2019-06-17)
 ...................
 * Fix ``Help`` section in ``README.rst`` (#31) by @pilosus

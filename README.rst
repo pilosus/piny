@@ -10,7 +10,8 @@ Piny
 Keep your app's configuration in a YAML file.
 Mark up sensitive data in the config as *environment variables*.
 Set environment variables on application deployment.
-Now let the *Piny* load your config and interpolate environment variables in it.
+Now let the *Piny* load your config and substitute environment variables
+in it with their values.
 
 Piny is developed with Docker and Kubernetes in mind,
 though it's not limited to any deployment system.
@@ -78,6 +79,15 @@ In such case, use a ``StrictMatcher``:
 Both strict and default matchers produce ``None`` value if environment variable
 matched is not set in the system (and no default syntax used in the case of
 default matcher).
+
+Piny also comes with *command line utility* that works both with files and standard
+input and output:
+
+.. code-block:: bash
+
+  $ export PASSWORD=mySecretPassword
+  $ echo "db: \${PASSWORD}" | piny
+  db: mySecretPassword
 
 
 Validation

@@ -12,6 +12,7 @@ from piny import (
     TrafaretValidator,
     ValidationError,
     YamlLoader,
+    YamlStreamLoader,
 )
 
 from . import config_directory, config_map
@@ -107,6 +108,24 @@ def test_marshmallow_validator_fail(name):
             schema=MarshmallowConfig,
             strict=True,
         ).load(many=False)
+
+
+@pytest.mark.parametrize("name", ["db"])
+def test_marshmallow_validator_stream_success(name):
+    with mock.patch("piny.matchers.StrictMatcher.constructor") as expand_mock:
+        expand_mock.return_value = config_map[name]
+
+        with open(config_directory.joinpath("{}.yaml".format(name)), "r") as fd:
+            config = YamlStreamLoader(
+                stream=fd,
+                matcher=StrictMatcher,
+                validator=MarshmallowValidator,
+                schema=MarshmallowConfig,
+            ).load()
+
+            assert config[name]["host"] == "db.example.com"
+            assert config[name]["login"] == "user"
+            assert config[name]["password"] == config_map[name]
 
 
 @pytest.mark.parametrize("name", ["db"])

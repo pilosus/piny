@@ -1,4 +1,4 @@
-from typing import Any, Type
+from typing import IO, Any, Type, Union
 
 import yaml
 
@@ -18,8 +18,8 @@ class YamlLoader:
 
     def __init__(
         self,
-        *,
         path: str,
+        *,
         matcher: Type[Matcher] = MatcherWithDefaults,
         validator: Type[Validator] = None,
         schema: Any = None,
@@ -55,6 +55,40 @@ class YamlLoader:
             with open(self.path) as fh:
                 load = yaml.load(fh, Loader=self.matcher)
         except (yaml.YAMLError, FileNotFoundError) as e:
+            raise LoadingError(origin=e, reason=str(e))
+
+        if (self.validator is not None) and (self.schema is not None):
+            return self.validator(self.schema, **self.schema_params).load(
+                data=load, **params
+            )
+        return load
+
+
+class YamlStreamLoader(YamlLoader):
+    """
+    YAML configuration loader for IO streams, e.g. file objects or stdin
+    """
+
+    def __init__(
+        self,
+        stream: Union[str, IO[str]],
+        *,
+        matcher: Type[Matcher] = MatcherWithDefaults,
+        validator: Type[Validator] = None,
+        schema: Any = None,
+        **schema_params,
+    ) -> None:
+        self.stream = stream
+        self.matcher = matcher
+        self.validator = validator
+        self.schema = schema
+        self.schema_params = schema_params
+
+    def load(self, **params) -> Any:
+        self._init_resolvers()
+        try:
+            load = yaml.load(self.stream, Loader=self.matcher)
+        except yaml.YAMLError as e:
             raise LoadingError(origin=e, reason=str(e))
 
         if (self.validator is not None) and (self.schema is not None):

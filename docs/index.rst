@@ -13,7 +13,7 @@ Piny: envs interpolation for config files
 - Keep your app's configuration in a YAML file.
 - Mark up sensitive data in config as *environment variables*.
 - Set environment variables on application deployment.
-- Let *Piny* load your configuration file and interpolate environment variables in it.
+- Let *Piny* load your configuration file and substitute environment variables with their values.
 
 Piny is developed with Docker and Kubernetes in mind,
 though it's not limited to any deployment system.
@@ -30,6 +30,19 @@ Set your environment variables, mark up your configuration file with them:
 Then load your config with *Piny*:
 
 .. literalinclude:: code/simple_yaml_loader.py
+
+
+CLI utility
+-----------
+
+Piny's also got a command line tool working both with files and standard input and output:
+
+.. code-block:: bash
+
+  $ export PASSWORD=mySecretPassword
+  $ echo "db: \${PASSWORD}" | piny
+  db: mySecretPassword
+
 
 Rationale
 ---------

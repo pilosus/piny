@@ -11,7 +11,7 @@ is parsed and validated.
 Loaders
 -------
 
-As for now, *Piny* supports the only loader class called ``YamlLoader``.
+``YamlLoader`` loader class is dedicated for use in Python applications.
 Based on `PyYAML`_, it parses YAML files, (arguably) the most beautiful
 file format for configuration files!
 
@@ -27,6 +27,10 @@ Basic loader usage is the following.
 3. In your app load config with *Piny*:
 
 .. literalinclude:: code/simple_yaml_loader.py
+
+``YamlStreamLoader`` class primary use is Piny CLI tool (see :ref:`usage-cli-docs`).
+But it also can be used interchargably with ``YamlLoader`` whenever IO streams
+are used instead of file paths.
 
 .. automodule:: piny.loaders
     :members:
@@ -120,3 +124,20 @@ Both exceptions inherit from the ``ConfigError``.
     :members:
     :undoc-members:
     :show-inheritance:
+
+
+.. _usage-cli-docs:
+
+Command line utility
+--------------------
+
+Piny comes with CLI tool that substitutes the values of environment variables
+in input file or ``stdin`` and write result to an output file or ``stdout``.
+Piny CLI utility is somewhat similar to ``GNU/gettext`` `envsubst`_ but works
+with files too.
+
+.. click:: piny.cli:cli
+   :prog: piny
+   :show-nested:
+
+.. _envsubst: https://www.gnu.org/software/gettext/manual/html_node/envsubst-Invocation.html
