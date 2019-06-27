@@ -1,6 +1,9 @@
 Installation
 ============
 
+pip
+---
+
 Just use::
 
   pip install -U piny
@@ -17,9 +20,15 @@ The full list of extra validation libraries is the following:
 - ``pydantic``
 - ``trafaret``
 
-You can also clone *Piny* from GitHub and install it using ``make install``
+
+GitHub
+------
+
+You can also clone *Piny* from `GitHub`_ and install it using ``make install``
 (see :ref:`contributing-docs`)::
 
   git clone https://github.com/pilosus/piny
   cd piny
   make install
+
+.. _GitHub: https://github.com/pilosus/piny

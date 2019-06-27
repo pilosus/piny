@@ -1,9 +1,10 @@
 Changelog
 ---------
 
-v0.6.0 (unreleased)
+v0.6.0 (2019-06-27)
 ...................
 * Add CLI utility (#35) by @pilosus
+* Update documentation, add integration examples (#34) by @pilosus
 
 v0.5.2 (2019-06-17)
 ...................
