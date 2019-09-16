@@ -8,7 +8,7 @@ trafaret==1.2.0
 # Linters, formatters, security checkers
 black==19.3b0
 flake8==3.7.8
-isort==4.3.20
+isort==4.3.21
 mypy==0.701
 safety==1.8.5
 
