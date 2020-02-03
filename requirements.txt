@@ -18,7 +18,7 @@ pytest-cov==2.8.1
 
 # Development tools
 ipython==7.12.0
-ipdb==0.12
+ipdb==0.12.3
 
 # Docs
 -r docs/requirements.txt
