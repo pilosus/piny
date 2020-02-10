@@ -14,7 +14,7 @@ safety==1.8.5
 
 # Testing
 pytest==5.3.5
-pytest-cov==2.7.1
+pytest-cov==2.8.1
 
 # Development tools
 ipython==7.5.0
