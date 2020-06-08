@@ -3,7 +3,7 @@ PyYAML==5.3.1
 Click==7.1.2
 marshmallow==3.6.1
 pydantic==1.5.1
-trafaret==1.2.0
+trafaret==2.0.2
 
 # Linters, formatters, security checkers
 black==19.3b0
