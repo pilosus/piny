@@ -10,7 +10,7 @@ black==19.10b0
 flake8==3.8.3
 isort==4.3.21
 mypy==0.780
-safety==1.8.5
+safety==1.9.0
 
 # Testing
 pytest==4.6.3
