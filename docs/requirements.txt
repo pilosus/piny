@@ -1,6 +1,6 @@
 Sphinx==3.3.1
 sphinx-rtd-theme==0.5.0
-sphinx-click==2.2.0
+sphinx-click==2.5.0
 
 # Inregration examples
 Flask==1.0.3
