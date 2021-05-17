@@ -3,4 +3,4 @@ sphinx-rtd-theme==0.5.2
 sphinx-click==3.0.0
 
 # Inregration examples
-Flask==1.0.3
+Flask==2.0.0
