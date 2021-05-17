@@ -1,5 +1,5 @@
 Sphinx==4.0.1
-sphinx-rtd-theme==0.4.3
+sphinx-rtd-theme==0.5.2
 sphinx-click==2.2.0
 
 # Inregration examples
