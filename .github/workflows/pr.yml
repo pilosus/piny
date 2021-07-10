@@ -18,7 +18,7 @@ jobs:
       uses: pilosus/action-pip-license-checker@v0.1.0
       with:
         requirements: 'requirements.txt'
-        fail: 'Permissive'
+        fail: 'Other'
         exclude: 'ipython.*'
         with-totals: true
         table-headers: true
