@@ -11,14 +11,14 @@ jobs:
 
     steps:
     - name: Checkout the code
-      uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f  # v2.3.4
+      uses: actions/checkout@v2.3.4
       with:
         fetch-depth: 0
     - name: Check Python deps licenses
       uses: pilosus/action-pip-license-checker@v0.1.0
       with:
         requirements: 'requirements.txt'
-        fail: 'Copyleft'
+        fail: 'Permissive'
         exclude: 'ipython.*'
         with-totals: true
         table-headers: true
