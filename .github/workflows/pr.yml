@@ -27,3 +27,23 @@ jobs:
       run: make mypy
     - name: Run tests
       run: make test
+
+  license_check:
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v2.3.4
+      with:
+        fetch-depth: 0
+    - name: Check Python deps licenses
+      id: license_check_report
+      uses: pilosus/action-pip-license-checker@v0.1.2
+      with:
+        requirements: 'requirements.txt'
+        fail: 'Copyleft'
+        exclude: 'pylint'
+        with-totals: true
+        table-headers: true
+    - name: Print report
+      if: ${{ always() }}
+      run: echo "${{ steps.license_check_report.outputs.report }}"
