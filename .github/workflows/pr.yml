@@ -14,9 +14,9 @@ jobs:
       with:
         fetch-depth: 0
     - name: Set up Python
-      uses: actions/setup-python@v2.2.1
+      uses: actions/setup-python@v2.2.2
       with:
-        python-version: "3.8"
+        python-version: "3.7"
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -37,10 +37,14 @@ jobs:
       with:
         fetch-depth: 0
     - name: Check Python deps licenses
-      uses: pilosus/action-pip-license-checker@v0.1.0
+      id: license_check_report
+      uses: pilosus/action-pip-license-checker@v0.1.2
       with:
         requirements: 'requirements.txt'
-        fail: 'Other'
-        exclude: 'ipython.*'
+        fail: 'Copyleft'
+        exclude: 'pylint'
         with-totals: true
         table-headers: true
+    - name: Print report
+      if: ${{ always() }}
+      run: echo "${{ steps.license_check_report.outputs.report }}"
