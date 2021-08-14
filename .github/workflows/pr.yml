@@ -36,7 +36,9 @@ jobs:
       with:
         fetch-depth: 0
     - name: Get explicit and transitive dependencies
-      run: pip freeze > requirements-all.txt
+      run: |
+        pip install -r requirements.txt
+        pip freeze > requirements-all.txt
     - name: Check Python deps licenses
       id: license_check_report
       uses: pilosus/action-pip-license-checker@v0.1.2
