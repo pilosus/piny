@@ -36,12 +36,12 @@ jobs:
       with:
         fetch-depth: 0
     - name: Get explicit and transitive dependencies
-      run: pip freeze > /tmp/requirements.txt
+      run: pip freeze > requirements-all.txt
     - name: Check Python deps licenses
       id: license_check_report
       uses: pilosus/action-pip-license-checker@v0.1.2
       with:
-        requirements: '/tmp/requirements.txt'
+        requirements: 'requirements-all.txt'
         fail: 'Copyleft'
         exclude: 'pylint'
         with-totals: true
