@@ -39,8 +39,10 @@ jobs:
       id: license_check_report
       uses: pilosus/action-pip-license-checker@d56a1a3f21f2bfb170f316dcd416188cf002be26
       with:
+        requirements: 'requirements.txt,docs/requirements.txt'
         external: 'external.csv'
-        fail: 'Copyleft'
+        fail: 'StrongCopyleft,NetworkCopyleft,Other,Error'
+        fails-only: true
         exclude: 'pylint'
         with-totals: true
         table-headers: true
