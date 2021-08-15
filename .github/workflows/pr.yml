@@ -37,7 +37,7 @@ jobs:
         fetch-depth: 0
     - name: Check Python deps licenses
       id: license_check_report
-      uses: pilosus/action-pip-license-checker@d56a1a3f21f2bfb170f316dcd416188cf002be26
+      uses: pilosus/action-pip-license-checker@main
       with:
         requirements: 'requirements.txt,docs/requirements.txt'
         external: 'external.csv'
