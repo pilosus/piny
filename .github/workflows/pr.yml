@@ -40,9 +40,9 @@ jobs:
       uses: pilosus/action-pip-license-checker@main
       with:
         requirements: 'requirements.txt,docs/requirements.txt'
-        external: 'external.cocoapods'
-        external-format: 'cocoapods'
-        external-options: '{:skip-header true :skip-footer true}'
+        external: 'external.gradle'
+        external-format: 'gradle'
+        external-options: '{:fully-qualified-names false}'
         fail: 'StrongCopyleft,NetworkCopyleft,Other,Error'
         fails-only: true
         exclude: 'pylint'
