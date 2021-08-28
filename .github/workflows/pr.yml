@@ -41,6 +41,8 @@ jobs:
       with:
         requirements: 'requirements.txt,docs/requirements.txt'
         external: 'external.csv'
+        external-format: 'csv'
+        external-options: '{:skip-header true}'
         fail: 'StrongCopyleft,NetworkCopyleft,Other,Error'
         fails-only: true
         exclude: 'pylint'
