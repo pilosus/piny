@@ -1,5 +1,5 @@
 # Package dependencies
-PyYAML==5.1.1
+PyYAML==6.0
 Click==7.0
 marshmallow==2.19.4
 pydantic==0.28
