@@ -1,7 +1,7 @@
 # Package dependencies
 PyYAML==6.0
 Click==8.0.4
-marshmallow==2.19.4
+marshmallow==3.14.1
 pydantic==0.28
 trafaret==1.2.0
 
