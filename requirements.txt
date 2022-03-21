@@ -13,7 +13,7 @@ mypy==0.941
 safety==1.10.3
 
 # Testing
-pytest==4.6.3
+pytest==7.1.1
 pytest-cov==2.7.1
 
 # Development tools
