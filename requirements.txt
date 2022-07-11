@@ -9,7 +9,7 @@ trafaret==2.1.1
 black==22.6.0
 flake8==4.0.1
 isort==5.10.1
-mypy==0.701
+mypy==0.961
 safety==1.8.5
 
 # Testing
