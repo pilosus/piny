@@ -37,7 +37,7 @@ jobs:
         fetch-depth: 0
     - name: Check Python deps licenses
       id: license_check_report
-      uses: pilosus/action-pip-license-checker@5566678bc52ba0342aff21500dcd9e24fe681bef
+      uses: pilosus/action-pip-license-checker@63b20fbf0cf2f700e8a0290bbd08845d72a1709e
       with:
         requirements: 'requirements.txt'
         fail: 'Copyleft'
