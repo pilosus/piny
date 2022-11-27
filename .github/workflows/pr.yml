@@ -39,13 +39,13 @@ jobs:
       id: license_check_report
       uses: pilosus/action-pip-license-checker@2c70e13466d79c8f0e9e9874a50db9ca44bb6502
       with:
-        requirements: 'requirements.test.txt,requirements.github.txt'
+        requirements: 'requirements.txt'
         fail: 'Copyleft'
         exclude: 'pylint'
         with-totals: true
         table-headers: true
-#        github-token: ${{ secrets.OAUTH_TOKEN_GITHUB }}
-#        verbose: true
+        github-token: ${{ secrets.OAUTH_TOKEN_GITHUB }}
+        verbose: true
     - name: Print report
       if: ${{ always() }}
       run: echo "${{ steps.license_check_report.outputs.report }}"
