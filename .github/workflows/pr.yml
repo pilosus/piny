@@ -44,8 +44,8 @@ jobs:
         exclude: 'pylint'
         with-totals: true
         table-headers: true
-        github-token: ${{ secrets.OAUTH_TOKEN_GITHUB }}
-        verbose: true
+#        github-token: ${{ secrets.OAUTH_TOKEN_GITHUB }}
+#        verbose: true
     - name: Print report
       if: ${{ always() }}
       run: echo "${{ steps.license_check_report.outputs.report }}"
