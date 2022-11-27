@@ -37,13 +37,15 @@ jobs:
         fetch-depth: 0
     - name: Check Python deps licenses
       id: license_check_report
-      uses: pilosus/action-pip-license-checker@v0.1.2
+      uses: pilosus/action-pip-license-checker@ae76257d76ffa4687fd82bea507ea9ec60640d90
       with:
         requirements: 'requirements.txt'
         fail: 'Copyleft'
         exclude: 'pylint'
         with-totals: true
         table-headers: true
+        github-token: ${{ secrets.OAUTH_TOKEN_GITHUB }}
+        verbose: true
     - name: Print report
       if: ${{ always() }}
       run: echo "${{ steps.license_check_report.outputs.report }}"
