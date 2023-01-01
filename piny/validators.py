@@ -44,7 +44,7 @@ class MarshmallowValidator(Validator):
 
     def load(self, data: LoadedData, **params):
         try:
-            return self.schema(**self.schema_params).load(data, **params).data
+            return self.schema(**self.schema_params).load(data, **params)
         except Exception as e:
             raise ValidationError(origin=e, reason=str(e))
 

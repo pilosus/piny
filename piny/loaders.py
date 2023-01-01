@@ -21,7 +21,7 @@ class YamlLoader:
         path: str,
         *,
         matcher: Type[Matcher] = MatcherWithDefaults,
-        validator: Type[Validator] = None,
+        validator: Union[Type[Validator], None] = None,
         schema: Any = None,
         **schema_params,
     ) -> None:
@@ -74,7 +74,7 @@ class YamlStreamLoader(YamlLoader):
         stream: Union[str, IO[str]],
         *,
         matcher: Type[Matcher] = MatcherWithDefaults,
-        validator: Type[Validator] = None,
+        validator: Union[Type[Validator], None] = None,
         schema: Any = None,
         **schema_params,
     ) -> None:

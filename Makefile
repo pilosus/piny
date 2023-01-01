@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := check
-isort = isort -rc -w 88 piny tests
-black = black -l 88 --target-version py36 piny tests
+isort = isort piny tests
+black = black --target-version py311 piny tests
 
 
 .PHONY: install
@@ -40,7 +40,7 @@ testcov: test
 .PHONY: mypy
 mypy:
 	@echo "Run mypy static analysis"
-	mypy piny
+	mypy --install-types --non-interactive piny
 
 .PHONY: safety
 safety:

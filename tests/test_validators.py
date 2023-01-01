@@ -106,7 +106,6 @@ def test_marshmallow_validator_fail(name):
             matcher=StrictMatcher,
             validator=MarshmallowValidator,
             schema=MarshmallowConfig,
-            strict=True,
         ).load(many=False)
 
 
@@ -148,7 +147,7 @@ def test_trafaret_validator_success(name):
 def test_trafaret_validator_fail(name):
     with pytest.raises(
         ValidationError,
-        match=r"\{'db': DataError\(\{'password': DataError\(value is not a string\)\}\)\}",
+        match=r"Validation failed: \{'db': DataError\(\"\{'password': DataError\('value is not a string'\)\}\"\)\}",
     ):
         YamlLoader(
             path=config_directory.joinpath("{}.yaml".format(name)),
