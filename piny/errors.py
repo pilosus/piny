@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Optional
 
 
 class PinyErrorMixin:
@@ -8,7 +8,7 @@ class PinyErrorMixin:
 
     msg_template: str
 
-    def __init__(self, origin: Exception = None, **context: Any) -> None:
+    def __init__(self, origin: Optional[Exception] = None, **context: Any) -> None:
         """
         Mixing for wrapping original exception
 

@@ -10,7 +10,7 @@ Piny
 Keep your app's configuration in a YAML file.
 Mark up sensitive data in the config as *environment variables*.
 Set environment variables on application deployment.
-Now let the *Piny* load your config and substitute environment variables
+Now let the *piny* load your config and substitute environment variables
 in it with their values.
 
 Piny is developed with Docker and Kubernetes in mind,
@@ -113,7 +113,6 @@ Piny supports *optional* data validation using third-party libraries:
       matcher=StrictMatcher,
       validator=MarshmallowValidator,
       schema=ConfigSchema,
-      strict=True
   ).load(many=False)
 
 

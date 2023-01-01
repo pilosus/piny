@@ -45,12 +45,12 @@ setup(
     include_package_data=True,
     packages=find_packages(exclude=['tests']),
     install_requires=[
-        'PyYAML>=5.1',
-        'Click>=7.0'
+        'PyYAML>=6,<7',
+        'Click>=8,<9'
     ],
     extras_require={
         'pydantic': ['pydantic>=0.28'],
-        'marshmallow': ['marshmallow>=2.19.3'],
+        'marshmallow': ['marshmallow>=3'],
         'trafaret': ['trafaret>=1.2.0'],
     },
     entry_points={
