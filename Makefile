@@ -1,6 +1,7 @@
 .DEFAULT_GOAL := check
 isort = isort src tests
 black = black src tests
+mypy = mypy --install-types src
 
 
 .PHONY: install
@@ -37,7 +38,7 @@ testcov: test
 .PHONY: mypy
 mypy:
 	@echo "Run mypy static analysis"
-	mypy src/piny
+	$(mypy)
 
 .PHONY: safety
 safety:
