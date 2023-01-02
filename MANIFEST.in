@@ -1,0 +1,5 @@
+global-exclude .gitignore
+exclude .readthedocs.yml
+prune tests
+prune docs
+prune .github

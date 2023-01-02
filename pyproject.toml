@@ -46,12 +46,6 @@ trafaret = ["trafaret>=1.2.0"]
 [project.scripts]
 piny = "piny.cli:cli"
 
-
-[tool.setuptools.packages.find]
-where = ["src"]
-include = ["piny*"]
-exclude = ["tests*", "docs*", ".github*"]
-
 [tool.setuptools_scm]
 write_to = "_version.py"
 
