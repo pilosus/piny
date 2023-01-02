@@ -3,7 +3,7 @@ Piny
 
 |Logo|
 
-|Coverage| |License|
+|PyPI| |Coverage| |License|
 
 **Piny** is YAML config loader with environment variables interpolation for Python.
 
@@ -154,19 +154,27 @@ Not only it's a library name, but also a name for YAML marked up
 with environment variables.
 
 
+Changelog
+---------
+
+See `CHANGELOG.rst`_.
+
+
 Contributing
 ------------
 
 See `CONTRIBUTING.rst`_.
 
-
+.. |PyPI| image:: https://img.shields.io/pypi/v/piny
+   :alt: PyPI
+   :target: https://pypi.org/project/piny/
 .. |Coverage| image:: https://img.shields.io/codecov/c/github/pilosus/piny.svg
    :alt: Codecov
    :target: https://codecov.io/gh/pilosus/piny
 .. |License| image:: https://img.shields.io/github/license/pilosus/piny.svg
    :alt: MIT License
    :target: https://github.com/pilosus/piny/blob/master/LICENSE
-.. |Logo| image:: https://github.com/pilosus/piny/blob/master/docs/piny_logo_noborder.png
+.. |Logo| image:: https://piny.readthedocs.io/en/latest/_static/piny_logo_noborder.png
    :alt: Piny logo
    :target: https://pypi.org/project/piny/
 
