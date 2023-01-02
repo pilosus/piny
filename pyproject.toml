@@ -54,6 +54,9 @@ atomic = true
 line_length = 88
 skip_gitignore = true
 known_first_party = ["piny"]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
 
 [tool.mypy]
 ignore_missing_imports = true

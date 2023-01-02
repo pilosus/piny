@@ -1,6 +1,5 @@
 from pathlib import Path
 
-
 config_directory = Path(__file__).resolve().parent.joinpath("configs")
 
 config_map = {

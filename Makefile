@@ -37,7 +37,7 @@ testcov: test
 .PHONY: mypy
 mypy:
 	@echo "Run mypy static analysis"
-	mypy --install-types --non-interactive piny
+	mypy src/piny
 
 .PHONY: safety
 safety:
