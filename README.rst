@@ -189,4 +189,5 @@ See `CONTRIBUTING.rst`_.
 .. _source code: https://github.com/pilosus/piny/tree/master/piny
 .. _coming soon: https://github.com/pilosus/piny/issues/12
 .. _CONTRIBUTING.rst: https://github.com/pilosus/piny/tree/master/CONTRIBUTING.rst
+.. _CHANGELOG.rst: https://github.com/pilosus/piny/tree/master/CHANGELOG.rst
 .. _documentation: https://piny.readthedocs.io/
