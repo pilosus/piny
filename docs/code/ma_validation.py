@@ -16,5 +16,4 @@ config = YamlLoader(
     matcher=StrictMatcher,
     validator=MarshmallowValidator,
     schema=ConfigSchema,
-    strict=True
 ).load(many=False)
