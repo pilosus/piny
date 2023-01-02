@@ -1,0 +1,75 @@
+# https://packaging.python.org/en/latest/tutorials/packaging-projects/
+# https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html
+
+[build-system]
+requires = ["setuptools>=61.0", "setuptools_scm[toml]>=6.3.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "piny"
+description = "Load YAML configs with environment variables interpolation"
+readme = "README.rst"
+authors = [
+    {name = "Vitaly Samigullin", email = "vrs@pilosus.org"},
+]
+dynamic = ["version"]
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Unix",
+    "Operating System :: POSIX :: Linux",
+    "Environment :: Console",
+    "Environment :: MacOS X",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet",
+]
+requires-python = ">=3.7"
+dependencies = [
+    "PyYAML>=6,<7",
+    "Click>=8,<9",
+]
+
+[project.optional-dependencies]
+pydantic = ["pydantic>=0.28"]
+marshmallow = ["marshmallow>=3"]
+trafaret = ["trafaret>=1.2.0"]
+
+[project.urls]
+"Source code" = "https://github.com/pilosus/piny/"
+"Issue tracker" = "https://github.com/pilosus/piny/issues"
+"Documentation" = "https://piny.readthedocs.io/en/latest/"
+
+[project.scripts]
+piny = "piny.cli:cli"
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["piny*"]
+exclude = ["tests*", "docs*", ".github*"]
+
+[tool.setuptools_scm]
+write_to = "_version.py"
+
+[tool.isort]
+atomic = true
+line_length = 88
+skip_gitignore = true
+known_first_party = ["piny"]
+
+[tool.mypy]
+ignore_missing_imports = true
+follow_imports = "silent"
+strict_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+disallow_any_generics = true
+check_untyped_defs = true
+
+[tool.black]
+target-version = ["py37", "py38", "py39", "py310", "py311"]
+line-length = 88

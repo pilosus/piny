@@ -1,12 +1,11 @@
 .DEFAULT_GOAL := check
-isort = isort piny tests
-black = black --target-version py311 piny tests
+isort = isort src tests
+black = black src tests
 
 
 .PHONY: install
 install:
 	@echo "Install package and its dependencies"
-	pip install -U pip setuptools wheel twine
 	pip install -U -r requirements.txt
 	pip install -e .
 
@@ -21,8 +20,6 @@ format:
 .PHONY: lint
 lint:
 	@echo "Run linters"
-	python setup.py check -rms
-	flake8 piny
 	$(isort) --check-only
 	$(black) --check
 
@@ -30,7 +27,7 @@ lint:
 .PHONY: test
 test:
 	@echo "Run tests"
-	pytest -vvs --cov=piny tests
+	pytest -vvs --cov=src.piny tests
 
 .PHONY: testcov
 testcov: test
@@ -55,19 +52,19 @@ check: lint test mypy safety
 .PHONY: build
 build:
 	@echo "Build Python package"
-	python setup.py sdist bdist_wheel
-
+	python -m build --sdist --wheel
+	python -m twine check dist/*
 
 .PHONY: push-test
 push-test:
 	@echo "Push package to test.pypi.org"
-	python -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+	python -m twine upload --verbose --repository testpypi dist/*
 
 
 .PHONY: push
 push:
 	@echo "Run package to PyPI"
-	python -m twine upload dist/*
+	python -m twine upload --verbose dist/*
 
 
 .PHONY: clean
@@ -86,8 +83,6 @@ clean:
 	rm -f .coverage.*
 	rm -rf build
 	rm -rf dist
-	python setup.py clean
-
 
 .PHONY: docs
 docs:

@@ -1,23 +1,22 @@
 from unittest import mock
 
-import pytest
 import yaml
 from click.testing import CliRunner
 
-from piny import LoadingError
-from piny.cli import cli
+from src.piny import LoadingError
+from src.piny.cli import cli
 
 from . import config_directory
 
 
 def test_cli_input_stdin_output_stdout():
     runner = CliRunner()
-    with mock.patch("piny.matchers.StrictMatcher.constructor") as expand_mock:
+    with mock.patch("src.piny.matchers.StrictMatcher.constructor") as expand_mock:
         expand_mock.return_value = "MySecretPassword"
         result = runner.invoke(cli, input="password: ${DB_PASSWORD}")
 
         assert result.exit_code == 0
-        assert result.stdout == "password: MySecretPassword\n"
+        assert result.output == "password: MySecretPassword\n"
 
 
 def test_cli_input_file_output_file():
@@ -29,7 +28,7 @@ def test_cli_input_file_output_file():
         with open("input.yaml", "w") as input_fd:
             input_fd.writelines(input_lines)
 
-        with mock.patch("piny.matchers.StrictMatcher.constructor") as expand_mock:
+        with mock.patch("src.piny.matchers.StrictMatcher.constructor") as expand_mock:
             expand_mock.return_value = "MySecretPassword"
             result = runner.invoke(cli, ["input.yaml", "output.yaml"])
 
@@ -44,7 +43,7 @@ def test_cli_input_file_output_file():
 
 def test_cli_fail():
     runner = CliRunner()
-    with mock.patch("piny.loaders.yaml.load") as loader_mock:
+    with mock.patch("src.piny.loaders.yaml.load") as loader_mock:
         loader_mock.side_effect = yaml.YAMLError("Oops!")
         result = runner.invoke(cli, input="password: ${DB_PASSWORD}")
         assert result.exit_code == 1

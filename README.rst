@@ -3,7 +3,7 @@ Piny
 
 |Logo|
 
-|Build| |Coverage| |Black| |Versions| |License|
+|Coverage| |Black| |Versions| |License|
 
 **Piny** is YAML config loader with environment variables interpolation for Python.
 
@@ -160,8 +160,6 @@ Contributing
 See `CONTRIBUTING.rst`_.
 
 
-.. |Build| image:: https://travis-ci.org/pilosus/piny.svg?branch=master
-   :target: https://travis-ci.org/pilosus/piny
 .. |Coverage| image:: https://img.shields.io/codecov/c/github/pilosus/piny.svg
    :alt: Codecov
    :target: https://codecov.io/gh/pilosus/piny
