@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := check
 isort = isort src tests
 black = black src tests
-mypy = mypy --install-types src
+mypy = mypy --install-types --non-interactive src
 
 
 .PHONY: install
