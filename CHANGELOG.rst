@@ -6,8 +6,10 @@ v1.0.0rc1 (2023-01-01)
 
 **Release breaks backward compatibility!**
 
-* Bump major dependencies: `PyYAML>=6,<7` `Click>=8,<9` (#36) by @pilosus
-* `Marshmallow` integration supports only v3.0.0 and later (#36) by @pilosus
+* Bump major dependencies: `PyYAML>=6,<7` `Click>=8,<9` (#192) by @pilosus
+* `Marshmallow` integration supports only v3.0.0 and later (#192) by @pilosus
+* Move to `pyproject.toml` for packaging (#193) by @pilosus
+* Raise Python requirement to `>=3.7` (#193) by @pilosus
 
 v0.6.0 (2019-06-27)
 ...................

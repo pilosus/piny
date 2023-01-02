@@ -17,11 +17,11 @@ sys.path.append(os.path.abspath('..'))
 # -- Project information -----------------------------------------------------
 
 project = 'Piny'
-copyright = '2019, Vitaly R. Samigullin'
-author = 'Vitaly R. Samigullin'
+copyright = '2019-2023, Vitaly Samigullin'
+author = 'Vitaly Samigullin'
 
-from version import get_version
-release = get_version(tag_only=True)
+from _version import version
+release = version
 
 # -- General configuration ---------------------------------------------------
 

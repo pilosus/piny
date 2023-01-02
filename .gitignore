@@ -1,4 +1,4 @@
-.version
+_version.py
 *.pyo
 *.pyc
 *.swp

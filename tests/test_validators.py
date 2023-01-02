@@ -5,7 +5,7 @@ import trafaret
 from marshmallow import Schema, fields
 from pydantic import BaseModel
 
-from piny import (
+from src.piny import (
     MarshmallowValidator,
     PydanticValidator,
     StrictMatcher,
@@ -55,7 +55,7 @@ TrafaretConfig = trafaret.Dict(db=TrafaretDB)
 
 @pytest.mark.parametrize("name", ["db"])
 def test_pydantic_validator_success(name):
-    with mock.patch("piny.matchers.StrictMatcher.constructor") as expand_mock:
+    with mock.patch("src.piny.matchers.StrictMatcher.constructor") as expand_mock:
         expand_mock.return_value = config_map[name]
         config = YamlLoader(
             path=config_directory.joinpath("{}.yaml".format(name)),
@@ -82,7 +82,7 @@ def test_pydantic_validator_fail(name):
 
 @pytest.mark.parametrize("name", ["db"])
 def test_marshmallow_validator_success(name):
-    with mock.patch("piny.matchers.StrictMatcher.constructor") as expand_mock:
+    with mock.patch("src.piny.matchers.StrictMatcher.constructor") as expand_mock:
         expand_mock.return_value = config_map[name]
         config = YamlLoader(
             path=config_directory.joinpath("{}.yaml".format(name)),
@@ -111,7 +111,7 @@ def test_marshmallow_validator_fail(name):
 
 @pytest.mark.parametrize("name", ["db"])
 def test_marshmallow_validator_stream_success(name):
-    with mock.patch("piny.matchers.StrictMatcher.constructor") as expand_mock:
+    with mock.patch("src.piny.matchers.StrictMatcher.constructor") as expand_mock:
         expand_mock.return_value = config_map[name]
 
         with open(config_directory.joinpath("{}.yaml".format(name)), "r") as fd:
@@ -129,7 +129,7 @@ def test_marshmallow_validator_stream_success(name):
 
 @pytest.mark.parametrize("name", ["db"])
 def test_trafaret_validator_success(name):
-    with mock.patch("piny.matchers.StrictMatcher.constructor") as expand_mock:
+    with mock.patch("src.piny.matchers.StrictMatcher.constructor") as expand_mock:
         expand_mock.return_value = config_map[name]
         config = YamlLoader(
             path=config_directory.joinpath("{}.yaml".format(name)),
