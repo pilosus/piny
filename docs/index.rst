@@ -6,7 +6,7 @@
 Piny: envs interpolation for config files
 =========================================
 
-|Build| |Coverage| |Black| |Versions| |License|
+|Coverage| |License|
 
 *Piny* is YAML config loader with environment variables interpolation for Python.
 
@@ -86,17 +86,9 @@ Read more about this approach in the `blog post`_.
    misc
 
 
-.. |Build| image:: https://travis-ci.org/pilosus/piny.svg?branch=master
-   :target: https://travis-ci.org/pilosus/piny
 .. |Coverage| image:: https://img.shields.io/codecov/c/github/pilosus/piny.svg
    :alt: Codecov
    :target: https://codecov.io/gh/pilosus/piny
-.. |Black| image:: https://img.shields.io/badge/code%20style-black-000000.svg
-   :target: https://github.com/python/black
-   :alt: Black Formatter
-.. |Versions| image:: https://img.shields.io/pypi/pyversions/piny.svg
-   :alt: PyPI - Python Version
-   :target: https://pypi.org/project/piny/
 .. |License| image:: https://img.shields.io/github/license/pilosus/piny.svg
    :alt: MIT License
    :target: https://github.com/pilosus/piny/blob/master/LICENSE
