@@ -70,3 +70,6 @@ check_untyped_defs = true
 [tool.black]
 target-version = ["py37", "py38", "py39", "py310", "py311"]
 line-length = 88
+
+[tool.coverage.report]
+fail_under = 95
