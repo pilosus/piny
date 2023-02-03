@@ -78,6 +78,10 @@ jobs:
         uses: actions/setup-python@v4.5.0
         with:
           python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          make install-pip
+          make install-deps
       - name: Build the package
         run: make build
       - name: Publish on PyPI
