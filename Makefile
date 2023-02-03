@@ -19,8 +19,13 @@ install-package:
 	@echo "Install package"
 	pip install -e .
 
+.PHONY: install-package-with-extra
+install-package-with-extra:
+	@echo "Install package with extra dependencies"
+	pip install -e .[pydantic,marshmallow,trafaret]
+
 .PHONY: install
-install: install-pip install-deps install-package
+install: install-pip install-deps install-package-with-extra
 
 .PHONY: format
 format:
