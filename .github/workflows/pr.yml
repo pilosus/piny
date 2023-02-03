@@ -33,8 +33,13 @@ jobs:
       uses: actions/checkout@v3
       with:
         fetch-depth: 0
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
     - name: Dump all package's dependencies
       run: |
+        make install-pip
         make install-package
         pip freeze > requirements.dump.txt
     - name: Check Python deps licenses

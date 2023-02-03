@@ -3,11 +3,15 @@ isort = isort src tests
 black = black src tests
 mypy = mypy --install-types --non-interactive src
 
+.PHONY: install-pip
+install-pip:
+	@echo "Install pip"
+	pip install -U pip
+
 
 .PHONY: install-deps
 install-deps:
 	@echo "Install dependencies"
-	pip install -U pip
 	pip install -U -r requirements.txt
 
 .PHONY: install-package
@@ -16,7 +20,7 @@ install-package:
 	pip install -e .
 
 .PHONY: install
-install: install-deps install-package
+install: install-pip install-deps install-package
 
 .PHONY: format
 format:
