@@ -1,0 +1,84 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+*'
+  pull_request:
+    branches:
+      - master
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Tests and Linters
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3.3.0
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v4.5.0
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: make install
+      - name: Run linters
+        run: make lint
+      - name: Run mypy
+        run: make mypy
+      - name: Run tests
+        run: make test
+
+  license:
+    name: License compliance check
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3.3.0
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v4.5.0
+        with:
+          python-version: '3.11'
+      - name: Dump all package's dependencies
+        run: |
+          make install-pip
+          make install-package
+          pip freeze > requirements.dump.txt
+      - name: Check Python deps licenses
+        id: license_check_report
+        uses: pilosus/action-pip-license-checker@v0.8.0
+        with:
+          requirements: 'requirements.dump.txt'
+          fail: 'StrongCopyleft,NetworkCopyleft,Other,Error'
+          totals: true
+          headers: true
+      - name: Print report
+        if: ${{ always() }}
+        run: echo "${{ steps.license_check_report.outputs.report }}"
+
+  publish:
+    name: Publish a package on PyPI
+    runs-on: ubuntu-22.04
+    needs: [test, license]
+    if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3.3.0
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v4.5.0
+        with:
+          python-version: '3.11'
+      - name: Build the package
+        run: make build
+      - name: Publish on PyPI
+        run: make push
