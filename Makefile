@@ -3,13 +3,24 @@ isort = isort src tests
 black = black src tests
 mypy = mypy --install-types --non-interactive src
 
+.PHONY: install-pip
+install-pip:
+	@echo "Install pip"
+	pip install -U pip
 
-.PHONY: install
-install:
-	@echo "Install package and its dependencies"
+
+.PHONY: install-deps
+install-deps:
+	@echo "Install dependencies"
 	pip install -U -r requirements.txt
+
+.PHONY: install-package
+install-package:
+	@echo "Install package"
 	pip install -e .
 
+.PHONY: install
+install: install-pip install-deps install-package
 
 .PHONY: format
 format:
@@ -28,7 +39,7 @@ lint:
 .PHONY: test
 test:
 	@echo "Run tests"
-	pytest -vvs --cov=src.piny tests
+	pytest -vvs --cov=piny tests
 
 .PHONY: testcov
 testcov: test
@@ -87,4 +98,5 @@ clean:
 
 .PHONY: docs
 docs:
+	pip install -U -r docs/requirements.txt
 	make -C docs html

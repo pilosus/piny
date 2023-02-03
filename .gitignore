@@ -17,3 +17,4 @@ TODO.rst
 .pytest_cache/
 htmlcov/
 __pycache__/
+_version.py

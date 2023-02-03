@@ -19,6 +19,3 @@ pytest-cov==4.0.0
 # Build tools
 twine
 build
-
-# Docs
--r docs/requirements.txt
