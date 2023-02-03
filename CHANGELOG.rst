@@ -1,6 +1,13 @@
 Changelog
 ---------
 
+v1.0.2 (2023-02-03)
+...................
+
+* Update GitHub workflow for CI: run tests & license checks for PRs, pushes to master and tags (#202) by @pilosus
+* Make dependabot update GitHub Actions (#202) by @pilosus
+
+
 v1.0.1 (2023-02-03)
 ...................
 
