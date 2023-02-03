@@ -85,4 +85,7 @@ jobs:
       - name: Build the package
         run: make build
       - name: Publish on PyPI
+        env:
+          TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
+          TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
         run: make push
