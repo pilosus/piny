@@ -4,12 +4,19 @@ black = black src tests
 mypy = mypy --install-types --non-interactive src
 
 
-.PHONY: install
-install:
-	@echo "Install package and its dependencies"
+.PHONY: install-deps
+install-deps:
+	@echo "Install dependencies"
+	pip install -U pip
 	pip install -U -r requirements.txt
+
+.PHONY: install-package
+install-package:
+	@echo "Install package"
 	pip install -e .
 
+.PHONY: install
+install: install-deps install-package
 
 .PHONY: format
 format:
