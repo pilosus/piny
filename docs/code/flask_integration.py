@@ -64,6 +64,7 @@ def configure_logging(app: Flask) -> None:
     log_handler.setLevel(app.settings["logging"]["level"])
     app.logger.addHandler(log_handler)
 
+
 #
 # Factory
 #
@@ -91,7 +92,7 @@ def create_app(path: str) -> Flask:
     return app
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app = create_app(sys.argv[1])
 
     @app.route("/")
