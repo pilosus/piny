@@ -28,7 +28,7 @@ lint:
 .PHONY: test
 test:
 	@echo "Run tests"
-	pytest -vvs --cov=src.piny tests
+	pytest -vvs --cov=piny tests
 
 .PHONY: testcov
 testcov: test
@@ -87,4 +87,5 @@ clean:
 
 .PHONY: docs
 docs:
+	pip install -U -r docs/requirements.txt
 	make -C docs html

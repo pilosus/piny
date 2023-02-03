@@ -1,6 +1,6 @@
 import pytest
 
-from src.piny import LoadingError, YamlLoader
+from piny import LoadingError, YamlLoader
 
 
 def test_loading_error():
