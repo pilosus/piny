@@ -2,7 +2,6 @@
 black==23.1.0
 isort==5.12.0
 mypy==0.991
-safety==2.3.5
 
 # Testing
 pytest==7.2.1

@@ -56,14 +56,9 @@ mypy:
 	@echo "Run mypy static analysis"
 	$(mypy)
 
-.PHONY: safety
-safety:
-	@echo "Run safety checker"
-	safety check --full-report
-
 
 .PHONY: check
-check: lint test mypy safety
+check: lint test mypy
 
 
 .PHONY: build
