@@ -1,6 +1,11 @@
 Changelog
 ---------
 
+v1.0.1 (2023-02-03)
+...................
+
+* Run tests against locally installed package instead of using ugly imports (...) by @pilosus
+
 v1.0.0 (2023-01-02)
 ......................
 
