@@ -60,7 +60,7 @@ jobs:
           fail: 'StrongCopyleft,NetworkCopyleft,Other,Error'
           totals: true
           headers: true
-          verbose: 3
+          verbose: 10
       - name: Print report
         if: ${{ always() }}
         run: echo "${{ steps.license_check_report.outputs.report }}"
