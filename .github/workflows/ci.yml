@@ -54,11 +54,11 @@ jobs:
           pip freeze > requirements.dump.txt
       - name: Check Python deps licenses
         id: license_check_report
-        uses: pilosus/action-pip-license-checker@v0.8.1
+        uses: pilosus/action-pip-license-checker@5022f0f44693f62f2b3b62705c81b4352569e602
         with:
           requirements: 'requirements.dump.txt'
           fail: 'StrongCopyleft,NetworkCopyleft,Other,Error'
-          totals: true
+          with-totals: true
           headers: true
       - name: Print report
         if: ${{ always() }}
