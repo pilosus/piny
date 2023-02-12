@@ -58,7 +58,7 @@ jobs:
         with:
           requirements: 'requirements.dump.txt'
           fail: 'StrongCopyleft,NetworkCopyleft,Other,Error'
-          with-totals: true
+          totals: true
           headers: true
       - name: Print report
         if: ${{ always() }}
