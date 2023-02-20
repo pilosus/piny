@@ -54,7 +54,7 @@ jobs:
           pip freeze > requirements.dump.txt
       - name: Check Python deps licenses
         id: license_check_report
-        uses: pilosus/action-pip-license-checker@8054f01c7c481ddca6bf8cb0e48ad4d01559332b
+        uses: pilosus/action-pip-license-checker@v1.0.0-rc1
         with:
           requirements: 'requirements.dump.txt'
           fail: 'StrongCopyleft,NetworkCopyleft,Other,Error'
