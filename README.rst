@@ -3,7 +3,7 @@ Piny
 
 |Logo|
 
-|PyPI| |Coverage| |License|
+|PyPI| |Coverage| |Downloads| |License|
 
 **Piny** is YAML config loader with environment variables interpolation for Python.
 
@@ -177,6 +177,9 @@ See `CONTRIBUTING.rst`_.
 .. |Logo| image:: https://piny.readthedocs.io/en/latest/_static/piny_logo_noborder.png
    :alt: Piny logo
    :target: https://pypi.org/project/piny/
+.. |Downloads| image:: https://img.shields.io/pypi/dm/piny
+   :alt: PyPI - Downloads
+
 
 .. _blog post: https://blog.pilosus.org/posts/2019/06/07/application-configs-files-or-environment-variables-actually-both/?utm_source=github&utm_medium=link&utm_campaign=rationale
 .. _future releases: https://github.com/pilosus/piny/issues/2
