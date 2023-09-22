@@ -25,14 +25,26 @@ class Validator(ABC):
         pass  # pragma: no cover
 
 
-class PydanticValidator(Validator):
+class PydanticValidator(Validator):  # pragma: no cover
     """
-    Validator class for Pydantic library
+    Validator class for Pydantic Version 1
     """
 
     def load(self, data: LoadedData, **params):
         try:
             return self.schema(**data).dict()
+        except Exception as e:
+            raise ValidationError(origin=e, reason=str(e))
+
+
+class PydanticV2Validator(Validator):
+    """
+    Validator class for Pydantic Version 2
+    """
+
+    def load(self, data: LoadedData, **params):
+        try:
+            return self.schema(**data).model_dump()
         except Exception as e:
             raise ValidationError(origin=e, reason=str(e))
 

@@ -1,6 +1,12 @@
 Changelog
 ---------
 
+v1.1.0 (2023-09-22)
+...................
+
+* Added: new validator `PydanticV2Validator` to support Pydantic v2
+
+
 v1.0.2 (2023-02-03)
 ...................
 
