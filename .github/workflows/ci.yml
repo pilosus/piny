@@ -19,11 +19,11 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout the code
-        uses: actions/checkout@v3.5.2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Set up Python
-        uses: actions/setup-python@v4.6.0
+        uses: actions/setup-python@v4
         with:
           python-version: '3.11'
       - name: Install dependencies
@@ -40,11 +40,11 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout the code
-        uses: actions/checkout@v3.5.2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Set up Python
-        uses: actions/setup-python@v4.6.0
+        uses: actions/setup-python@v4
         with:
           python-version: '3.11'
       - name: Dump all package's dependencies
@@ -54,7 +54,7 @@ jobs:
           pip freeze > requirements.dump.txt
       - name: Check Python deps licenses
         id: license_check_report
-        uses: pilosus/action-pip-license-checker@v1.0.0-rc1
+        uses: pilosus/action-pip-license-checker@v2
         with:
           requirements: 'requirements.dump.txt'
           fail: 'StrongCopyleft,NetworkCopyleft,Other,Error'
@@ -71,11 +71,11 @@ jobs:
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
     steps:
       - name: Checkout the code
-        uses: actions/checkout@v3.5.2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Set up Python
-        uses: actions/setup-python@v4.6.0
+        uses: actions/setup-python@v4
         with:
           python-version: '3.11'
       - name: Install dependencies
