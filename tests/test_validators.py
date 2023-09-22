@@ -1,12 +1,14 @@
 from unittest import mock
 
+import pydantic
 import pytest
 import trafaret
 from marshmallow import Schema, fields
-from pydantic import BaseModel
+from packaging import version
 
 from piny import (
     MarshmallowValidator,
+    PydanticV2Validator,
     PydanticValidator,
     StrictMatcher,
     TrafaretValidator,
@@ -17,18 +19,21 @@ from piny import (
 
 from . import config_directory, config_map
 
+if version.parse(pydantic.__version__) >= version.parse("2.0"):
+    PydanticValidator = PydanticV2Validator
+
 #
 # Const
 #
 
 
-class PydanticDB(BaseModel):
+class PydanticDB(pydantic.BaseModel):
     host: str
     login: str
     password: str
 
 
-class PydanticConfig(BaseModel):
+class PydanticConfig(pydantic.BaseModel):
     db: PydanticDB
 
 
@@ -71,7 +76,7 @@ def test_pydantic_validator_success(name):
 
 @pytest.mark.parametrize("name", ["db"])
 def test_pydantic_validator_fail(name):
-    with pytest.raises(ValidationError, match=r"db -> password"):
+    with pytest.raises(ValidationError, match=r"db.*password"):
         YamlLoader(
             path=config_directory.joinpath("{}.yaml".format(name)),
             matcher=StrictMatcher,

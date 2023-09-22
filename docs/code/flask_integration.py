@@ -1,11 +1,19 @@
 from flask import Flask
 from flask.logging import default_handler
-from piny import YamlLoader, StrictMatcher, PydanticValidator
+from piny import YamlLoader, StrictMatcher, PydanticV2Validator
 from pydantic import BaseModel, validator
 from typing import Any, Dict, Optional
 from werkzeug.serving import run_simple
 import logging
 import sys
+
+# Watch out!
+# Pydantic V2 deprecated some model's methods:
+# https://docs.pydantic.dev/2.0/migration/
+#
+# For Pydantic v2 use `PydanticV2Validator`
+# For Pydantic v1 use `PydanticValidator`
+
 
 #
 # Validation
@@ -78,7 +86,7 @@ def create_app(path: str) -> Flask:
     config = YamlLoader(
         path=path,
         matcher=StrictMatcher,
-        validator=PydanticValidator,
+        validator=PydanticV2Validator,
         schema=Configuration,
     ).load()
 
