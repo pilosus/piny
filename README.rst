@@ -179,7 +179,7 @@ See `CONTRIBUTING.rst`_.
    :target: https://pypi.org/project/piny/
 .. |Downloads| image:: https://img.shields.io/pypi/dm/piny
    :alt: PyPI - Downloads
-
+   :target: https://pypistats.org/packages/piny
 
 .. _blog post: https://blog.pilosus.org/posts/2019/06/07/application-configs-files-or-environment-variables-actually-both/?utm_source=github&utm_medium=link&utm_campaign=rationale
 .. _future releases: https://github.com/pilosus/piny/issues/2
