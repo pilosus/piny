@@ -1,6 +1,6 @@
 # Linters, formatters, security checkers
 black==25.1.0
-isort==5.12.0
+isort==6.0.1
 mypy==1.15.0
 
 # Testing
